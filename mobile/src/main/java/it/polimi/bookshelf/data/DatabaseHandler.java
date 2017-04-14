@@ -75,8 +75,6 @@ public class DatabaseHandler {
         cv.put(DatabaseStrings.SHELF_ID, shelf.getName());
         cv.put(DatabaseStrings.SHELF_BOOKCOUNT, shelf.getBookCount());
 
-        Log.v("SHELF INSERT: ", shelf.getName());
-        Log.v("SHELF INSERT: ", ""+shelf.getBookCount());
         try {
             db.insert(DatabaseStrings.TBL_SHELF, null, cv);
         } catch (SQLiteException sqle) {
@@ -84,9 +82,6 @@ public class DatabaseHandler {
         }
 
         Shelf testS = this.queryShelf(shelf.getName());
-
-        Log.v("SHELF INSERT: ", testS.getName());
-        Log.v("SHELF INSERT: ", ""+testS.getBookCount());
     }
 
     public boolean deleteBook(String ISBN) {
@@ -321,7 +316,8 @@ public class DatabaseHandler {
 
             Shelf Shelf = new Shelf();
 
-            Shelf.setBookCount(crs.getInt(0));
+            Shelf.setName(crs.getString(0));
+            Shelf.setBookCount(crs.getInt(1));
 
             ShelfList.add(Shelf);
             crs.moveToNext();

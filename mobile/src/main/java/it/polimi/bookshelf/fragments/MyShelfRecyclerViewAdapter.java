@@ -1,5 +1,6 @@
 package it.polimi.bookshelf.fragments;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import it.polimi.bookshelf.R;
+import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.model.Shelf;
 
 import java.util.List;
@@ -15,10 +17,11 @@ import java.util.List;
 public class MyShelfRecyclerViewAdapter extends RecyclerView.Adapter<MyShelfRecyclerViewAdapter.ViewHolder> {
 
     private final List<Shelf> mShelves;
+    private DataHandler dH;
 
-    public MyShelfRecyclerViewAdapter(List<Shelf> shelves) {
+    public MyShelfRecyclerViewAdapter(List<Shelf> shelves, Context context) {
         mShelves = shelves;
-        Log.v("LOADED ADAPTER", ""+mShelves.size());
+        dH = new DataHandler(context);
     }
 
     @Override
@@ -31,15 +34,14 @@ public class MyShelfRecyclerViewAdapter extends RecyclerView.Adapter<MyShelfRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mShelves.get(position);
-        //holder.mIdView.setText(holder.mItem.getName());
-        //holder.mContentView.setText(holder.mItem.getBookCount());
-        holder.mIdView.setText("PROVA");
-        holder.mContentView.setText("0");
-        Log.v("ITEM", holder.mItem.getName()+holder.mItem.getBookCount());
+        holder.mIdView.setText(holder.mItem.getName());
+        holder.mContentView.setText(String.valueOf(holder.mItem.getBookCount()));
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dH.getDatabaseHandler().deleteShelf(holder.mItem.getName());
+                notifyDataSetChanged();
             }
         });
     }

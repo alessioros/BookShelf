@@ -26,6 +26,7 @@ MERGED from [com.android.support:support-v4:25.3.1] /Users/alessiorossotti/.andr
 MERGED from [com.android.support:support-fragment:25.3.1] /Users/alessiorossotti/.android/build-cache/22f2fefcbd406c98aea14fb12b28b3a934949a68/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:25.3.1] /Users/alessiorossotti/.android/build-cache/c553aa93c1c2c68523a0a64fe64a580eb3ecd1e6/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.1] /Users/alessiorossotti/.android/build-cache/a3748481d9437f2c92e1e979ffb0bf2e577a5fb6/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/alessiorossotti/.android/build-cache/5cbadb01e977055e83b87fc069c4303c4828b850/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-core-ui:25.3.1] /Users/alessiorossotti/.android/build-cache/809acf9d706066f62e047d8ae50cd3323b8f3c70/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] /Users/alessiorossotti/.android/build-cache/ecfa5bd6512e2369df89d8fb0897cb070f95cc80/output/AndroidManifest.xml:29:5-20
 	android:label
@@ -79,6 +80,7 @@ MERGED from [com.android.support:support-v4:25.3.1] /Users/alessiorossotti/.andr
 MERGED from [com.android.support:support-fragment:25.3.1] /Users/alessiorossotti/.android/build-cache/22f2fefcbd406c98aea14fb12b28b3a934949a68/output/AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.1] /Users/alessiorossotti/.android/build-cache/c553aa93c1c2c68523a0a64fe64a580eb3ecd1e6/output/AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-utils:25.3.1] /Users/alessiorossotti/.android/build-cache/a3748481d9437f2c92e1e979ffb0bf2e577a5fb6/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/alessiorossotti/.android/build-cache/5cbadb01e977055e83b87fc069c4303c4828b850/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/alessiorossotti/.android/build-cache/d2de357e2efee770c9da91ae8769b0dbec06b64d/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-core-ui:25.3.1] /Users/alessiorossotti/.android/build-cache/809acf9d706066f62e047d8ae50cd3323b8f3c70/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-compat:25.3.1] /Users/alessiorossotti/.android/build-cache/ecfa5bd6512e2369df89d8fb0897cb070f95cc80/output/AndroidManifest.xml:21:5-23:58
@@ -100,6 +102,7 @@ MERGED from [com.android.support:support-v4:25.3.1] /Users/alessiorossotti/.andr
 MERGED from [com.android.support:support-fragment:25.3.1] /Users/alessiorossotti/.android/build-cache/22f2fefcbd406c98aea14fb12b28b3a934949a68/output/AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-media-compat:25.3.1] /Users/alessiorossotti/.android/build-cache/c553aa93c1c2c68523a0a64fe64a580eb3ecd1e6/output/AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-utils:25.3.1] /Users/alessiorossotti/.android/build-cache/a3748481d9437f2c92e1e979ffb0bf2e577a5fb6/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/alessiorossotti/.android/build-cache/5cbadb01e977055e83b87fc069c4303c4828b850/output/AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/alessiorossotti/.android/build-cache/d2de357e2efee770c9da91ae8769b0dbec06b64d/output/AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:support-core-ui:25.3.1] /Users/alessiorossotti/.android/build-cache/809acf9d706066f62e047d8ae50cd3323b8f3c70/output/AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-compat:25.3.1] /Users/alessiorossotti/.android/build-cache/ecfa5bd6512e2369df89d8fb0897cb070f95cc80/output/AndroidManifest.xml:25:5-27:34

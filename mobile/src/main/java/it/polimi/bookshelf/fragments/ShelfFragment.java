@@ -19,7 +19,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import it.polimi.bookshelf.R;
-import it.polimi.bookshelf.activities.VerticalOrientationCA;
 import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.data.DatabaseHandler;
 import it.polimi.bookshelf.model.Shelf;
@@ -47,7 +46,6 @@ public class ShelfFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_shelf_list, container, false);
 
         mShelves = loadShelves();
-        Log.v("SHELF LIST SIZE: ", ""+mShelves.size() );
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
@@ -80,6 +78,7 @@ public class ShelfFragment extends Fragment {
                             Toast toast = Toast.makeText(getActivity(), "PLEASE INSERT A VALID NAME", Toast.LENGTH_SHORT);
                             toast.show();
                         }
+                        mShelves = loadShelves();
                     }
                 });
                 builder.setNegativeButton(getResources().getString(R.string.alert_cancel), new DialogInterface.OnClickListener() {
@@ -100,7 +99,7 @@ public class ShelfFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-        recyclerView.setAdapter(new MyShelfRecyclerViewAdapter(mShelves));
+        recyclerView.setAdapter(new MyShelfRecyclerViewAdapter(mShelves, getActivity()));
 
         return view;
     }
