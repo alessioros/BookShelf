@@ -1,0 +1,7 @@
+#Sun Apr 09 18:22:57 CEST 2017
+base.0=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6d6df9f90875ff4390ef65cb43627da8418df08f
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1a9fe4259f08a3a1b6d85b7423988d7ff443420f/classes.dex
+base.1=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1a9fe4259f08a3a1b6d85b7423988d7ff443420f
+file.0=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6d6df9f90875ff4390ef65cb43627da8418df08f/classes.dex

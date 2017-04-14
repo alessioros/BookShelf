@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/56e5d8d7206bdcae2d252ba3bd36eedfa8c2585d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_66d0857dc1e9d4c63915b701b046cca899fe9888/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/6e665a1cf1ec53595d01f9a65cddf86b28c34d74/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e4ad18d1d66e2d848addf9150a380ff82d1c4458/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/c553aa93c1c2c68523a0a64fe64a580eb3ecd1e6/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3cb7d8441fd78c0c26995cdd5d488cc43358d789/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/1cf644bb8264e782b02bc1e6fa98cd8e218e8785/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f65a0053cb4f8dc5d19af25cda482926ba41334a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_59b8dbcb7b0887ba9af81c8ae27439d9b9ace6cc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/ecfa5bd6512e2369df89d8fb0897cb070f95cc80/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_12864a799c9b7a90c892fb35198b46a9d9370fea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_7013f1e35fcc2fce8e8a226be7aa06f1360a9acf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1a9fe4259f08a3a1b6d85b7423988d7ff443420f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/a3748481d9437f2c92e1e979ffb0bf2e577a5fb6/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6da45400d3afef22085fd9ebd66b980dc4ba1d04/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/d2de357e2efee770c9da91ae8769b0dbec06b64d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ac458c3e359ba824ef29467142b2742b12d7c6eb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/809acf9d706066f62e047d8ae50cd3323b8f3c70/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9de56fb58efcb73324276665d400145b3be51d81/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7640ac31c75c92df2e4d76c6bcd567803c2c791c">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6d6df9f90875ff4390ef65cb43627da8418df08f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/6cc42d7e7df532321b62acd0ac60317cb11cc4fc/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1d8557cac96eeb378633fda2c852f83d30e186fd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/4355d40787cb04eff0eee7b6a1de47736df0689d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4e7da46355a35249100390ba22b8048b752ae983/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5706471411be1f01de6c16f3214e4f90dc6a9d6d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/22f2fefcbd406c98aea14fb12b28b3a934949a68/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_bfbb5d6da973d6e8342c0630c60f29eeac9904d0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_024420d8f66f0bbd34728c08e171d788b2d6e370/classes.dex" />
+    </item>
+
+</items>
