@@ -84,6 +84,7 @@ MERGED from [com.android.support:cardview-v7:25.3.1] /Users/alessiorossotti/.and
 MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/alessiorossotti/.android/build-cache/d2de357e2efee770c9da91ae8769b0dbec06b64d/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-core-ui:25.3.1] /Users/alessiorossotti/.android/build-cache/809acf9d706066f62e047d8ae50cd3323b8f3c70/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-compat:25.3.1] /Users/alessiorossotti/.android/build-cache/ecfa5bd6512e2369df89d8fb0897cb070f95cc80/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.github.nekocode:Badge:1.6.2] /Users/alessiorossotti/.android/build-cache/848947d7331c8b9f71a5a36d5104fe4070df248d/output/AndroidManifest.xml:8:5-10:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.1] /Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion

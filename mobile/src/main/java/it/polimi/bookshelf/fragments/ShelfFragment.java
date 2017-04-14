@@ -73,12 +73,13 @@ public class ShelfFragment extends Fragment {
 
                         if (!shelfName.equals("")){
                             dbH.insertShelf(new Shelf(shelfName, 0));
+                            mShelves.add(new Shelf(shelfName, 0));
 
                         }else{
                             Toast toast = Toast.makeText(getActivity(), "PLEASE INSERT A VALID NAME", Toast.LENGTH_SHORT);
                             toast.show();
                         }
-                        mShelves = loadShelves();
+
                     }
                 });
                 builder.setNegativeButton(getResources().getString(R.string.alert_cancel), new DialogInterface.OnClickListener() {
