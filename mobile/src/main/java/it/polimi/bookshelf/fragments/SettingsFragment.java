@@ -1,12 +1,10 @@
 package it.polimi.bookshelf.fragments;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.design.widget.NavigationView;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;

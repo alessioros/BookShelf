@@ -8,7 +8,7 @@ public class PreferenceHandler {
 
 	private SharedPreferences sp;
 	private SharedPreferences.Editor editor;
-	private String PREFERENCE_NAME = "default";
+	private final String PREFERENCE_NAME = "default";
 	private Context context;
 
 	public PreferenceHandler(Context context) {
@@ -27,7 +27,7 @@ public class PreferenceHandler {
 
         editor = sp.edit();
 		editor.putString(context.getResources().getString(R.string.user_name), value);
-		editor.commit();
+		editor.apply();
 	}
 
 	public void resetUser_name() {
@@ -35,7 +35,7 @@ public class PreferenceHandler {
 		String defaultValue = context.getResources().getString(R.string.user_name_default);
         editor = sp.edit();
 		editor.putString(context.getResources().getString(R.string.user_name), defaultValue);
-		editor.commit();
+		editor.apply();
 	}
 	public String getUser_surname() {
 
@@ -55,7 +55,7 @@ public class PreferenceHandler {
 		String defaultValue = context.getResources().getString(R.string.user_surname_default);
         editor = sp.edit();
 		editor.putString(context.getResources().getString(R.string.user_surname), defaultValue);
-		editor.commit();
+		editor.apply();
 	}
 	public int getNum_books() {
 
@@ -67,7 +67,7 @@ public class PreferenceHandler {
 
         editor = sp.edit();
 		editor.putInt(context.getResources().getString(R.string.num_books), value);
-		editor.commit();
+		editor.apply();
 	}
 
 	public void resetNum_books() {
@@ -75,6 +75,6 @@ public class PreferenceHandler {
 		int defaultValue = Integer.parseInt(context.getResources().getString(R.string.num_books_default));
         editor = sp.edit();
 		editor.putInt(context.getResources().getString(R.string.num_books), defaultValue);
-		editor.commit();
+		editor.apply();
 	}
 }

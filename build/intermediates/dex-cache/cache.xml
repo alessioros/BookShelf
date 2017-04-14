@@ -93,15 +93,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/alessiorossotti/.android/build-cache/848947d7331c8b9f71a5a36d5104fe4070df248d/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a5ad6ca96fc716691e0ddb6f128a3d915582dde5">
-        <dex dex="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c38a59088916ed92e0f1850adad6d9f1aa83d2c1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
