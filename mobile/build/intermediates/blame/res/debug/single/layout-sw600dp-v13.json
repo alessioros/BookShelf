@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/layout-sw600dp-v13/design_layout_snackbar.xml"
-    },
-    {
         "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
         "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/layout-sw600dp-v13/design_layout_snackbar.xml"
     }

@@ -20,6 +20,21 @@
 
     <string name="action_settings">Settings</string>
 
+    <!-- SCANNING -->
+    <string name="scan_isbn">Scan a ISBN</string>
+    <string name="no_scandata">No book scan data received!</string>
+    <string name="found">found</string>
+    <string name="search_for_books">Searching for books...</string>
+    <string name="book_alr_added">You have already added this book</string>
+    <string name="booksfinder_error">Sorry, no book found</string>
+    <string name="wait">Wait</string>
+
+    <!-- BOOK DETAIL -->
+    <string name="del_book">Delete Book</string>
+    <string name="add_book">Add Book</string>
+    <string name="title_activity_book_detail">BookDetail</string>
+    <string name="book_pages">pages</string>
+
     <!-- SETTINGS FRAGMENT -->
     <string name="settings_title">Settings</string>
 
@@ -48,6 +63,14 @@
     <string name="scan_book_prompt">Scan an ISBN</string>
     <string name="scan_a_book">Scan a book</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_confirm">Are you sure ?</string>
+    <string name="error_add">Error on adding the book, try again</string>
+    <string name="error_ask">Error on asking the book, try again</string>
+    <string name="error_delete">Error on deleting the book, try again</string>
+
+    <string name="success_add">Book succesfully added!</string>
+    <string name="success_delete">Book succesfully deleted!</string>
+    <string name="title_activity_shelf">ShelfActivity</string>
 </resources>

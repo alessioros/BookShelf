@@ -2,17 +2,18 @@ package it.polimi.bookshelf.utilities;
 
 import java.util.Date;
 
-import it.polimi.bookshelf.model.Author;
 import it.polimi.bookshelf.model.Book;
 
 public class MergeBookSources {
 
+    private boolean amazon, google, lt;
+
     public Book mergeBooks(Book amazonBook, Book googleBook, Book LTBook) {
 
         Book book = new Book();
-        boolean amazon = (amazonBook != null);
-        boolean google = (googleBook != null);
-        boolean lt = (LTBook != null);
+        amazon = (amazonBook != null);
+        google = (googleBook != null);
+        lt = (LTBook != null);
 
         if (amazon && google && lt) {
 
@@ -22,7 +23,7 @@ public class MergeBookSources {
 
             try {
                 // mandatory info
-                if (book.getISBN().equals("") || book.getTitle().equals("") || book.getAuthorID() != 0)
+                if (book.getISBN().equals("") || book.getTitle().equals(""))
                     return null;
 
             } catch (NullPointerException e) {
@@ -41,7 +42,7 @@ public class MergeBookSources {
                 book.setImgUrl("https://www.islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg");
             }
 
-        } else if (amazon && google) {
+        } else if (amazon && google && !lt) {
 
             book.setISBN(mergeTwo(amazonBook.getISBN(), googleBook.getISBN()));
             book.setTitle(mergeTwo(googleBook.getTitle(), amazonBook.getTitle()));
@@ -49,7 +50,7 @@ public class MergeBookSources {
 
             try {
                 // mandatory info
-                if (book.getISBN().equals("") || book.getTitle().equals("") || book.getAuthorID() != 0)
+                if (book.getISBN().equals("") || book.getTitle().equals(""))
                     return null;
 
             } catch (NullPointerException e) {
@@ -69,7 +70,7 @@ public class MergeBookSources {
             }
 
 
-        } else if (amazon && lt) {
+        } else if (amazon && !google && lt) {
 
             book.setISBN(mergeTwo(amazonBook.getISBN(), LTBook.getISBN()));
             book.setTitle(mergeTwo(amazonBook.getTitle(), LTBook.getTitle()));
@@ -77,7 +78,7 @@ public class MergeBookSources {
 
             try {
                 // mandatory info
-                if (book.getISBN().equals("") || book.getTitle().equals("") || book.getAuthorID() != 0)
+                if (book.getISBN().equals("") || book.getTitle().equals(""))
                     return null;
 
             } catch (NullPointerException e) {
@@ -96,7 +97,7 @@ public class MergeBookSources {
                 book.setImgUrl("https://www.islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg");
             }
 
-        } else if (amazon) {
+        } else if (amazon && !google && !lt) {
 
             book.setISBN(amazonBook.getISBN());
             book.setTitle(amazonBook.getTitle());
@@ -104,7 +105,7 @@ public class MergeBookSources {
 
             try {
                 // mandatory info
-                if (book.getISBN().equals("") || book.getTitle().equals("") || book.getAuthorID() != 0)
+                if (book.getISBN().equals("") || book.getTitle().equals(""))
                     return null;
 
             } catch (NullPointerException e) {
@@ -123,7 +124,7 @@ public class MergeBookSources {
                 book.setImgUrl("https://www.islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg");
             }
 
-        } else if (google && lt) {
+        } else if (!amazon && google && lt) {
 
             book.setISBN(mergeTwo(googleBook.getISBN(), LTBook.getISBN()));
             book.setTitle(mergeTwo(googleBook.getTitle(), LTBook.getTitle()));
@@ -131,7 +132,7 @@ public class MergeBookSources {
 
             try {
                 // mandatory info
-                if (book.getISBN().equals("") || book.getTitle().equals("") || book.getAuthorID() != 0)
+                if (book.getISBN().equals("") || book.getTitle().equals(""))
                     return null;
 
             } catch (NullPointerException e) {
@@ -150,7 +151,7 @@ public class MergeBookSources {
                 book.setImgUrl("https://www.islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg");
             }
 
-        } else if (google) {
+        } else if (!amazon && google && !lt) {
 
             book.setISBN(googleBook.getISBN());
             book.setTitle(googleBook.getTitle());
@@ -158,7 +159,7 @@ public class MergeBookSources {
 
             try {
                 // mandatory info
-                if (book.getISBN().equals("") || book.getTitle().equals("") || book.getAuthorID() != 0)
+                if (book.getISBN().equals("") || book.getTitle().equals(""))
                     return null;
 
             } catch (Exception e) {
@@ -178,7 +179,7 @@ public class MergeBookSources {
                 book.setImgUrl("https://www.islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg");
             }
 
-        } else if (lt) {
+        } else if (!amazon && !google && lt) {
 
             book.setISBN(LTBook.getISBN());
             book.setTitle(LTBook.getTitle());
@@ -186,7 +187,7 @@ public class MergeBookSources {
 
             try {
                 // mandatory info
-                if (book.getISBN().equals("") || book.getTitle().equals("") || book.getAuthorID() != 0)
+                if (book.getISBN().equals("") || book.getTitle().equals(""))
                     return null;
 
             } catch (NullPointerException e) {
@@ -213,7 +214,7 @@ public class MergeBookSources {
         return book;
     }
 
-    private String mergeTwo(String stringOne, String stringTwo) {
+    public String mergeTwo(String stringOne, String stringTwo) {
 
         if (stringOne != null && !stringOne.equals("")) {
 
@@ -227,7 +228,7 @@ public class MergeBookSources {
         return "";
     }
 
-    private String mergeThree(String stringOne, String stringTwo, String stringThree) {
+    public String mergeThree(String stringOne, String stringTwo, String stringThree) {
 
         if (stringOne != null && !stringOne.equals("")) {
 
@@ -245,7 +246,7 @@ public class MergeBookSources {
         return "";
     }
 
-    private int mergeTwo(int one, int two) {
+    public int mergeTwo(int one, int two) {
 
         if (one != 0) {
 
@@ -259,21 +260,7 @@ public class MergeBookSources {
         return 0;
     }
 
-    private Author mergeTwo(Author one, Author two) {
-
-        if (one != null) {
-
-            return one;
-
-        } else if (two != null) {
-
-            return two;
-        }
-
-        return new Author();
-    }
-
-    private Date mergeTwo(Date one, Date two) {
+    public Date mergeTwo(Date one, Date two) {
 
         if (one != null) {
 
@@ -287,7 +274,7 @@ public class MergeBookSources {
         return new Date();
     }
 
-    private int mergeThree(int one, int two, int three) {
+    public int mergeThree(int one, int two, int three) {
 
         if (one != 0) {
 
@@ -305,25 +292,7 @@ public class MergeBookSources {
         return 0;
     }
 
-    private Author mergeThree(Author one, Author two, Author three) {
-
-        if (one != null) {
-
-            return one;
-
-        } else if (two != null) {
-
-            return two;
-
-        } else if (three != null) {
-
-            return three;
-        }
-
-        return new Author();
-    }
-
-    private Date mergeThree(Date one, Date two, Date three) {
+    public Date mergeThree(Date one, Date two, Date three) {
 
         if (one != null) {
 

@@ -25,6 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/homeImage"
         android:layout_marginTop="-90dp"
+        android:textColor="#222"
         android:textSize="@dimen/app_title_txtsize"/>
 
     <TextView
@@ -35,15 +36,29 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/app_title"
+        android:textColor="#555"
         android:textSize="@dimen/app_subtitle_txtsize"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_below="@id/app_subtitle"
+        android:layout_marginTop="30dp"
+        android:elevation="1dp"/>
 
     <Button
         android:id="@+id/scan_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/scan_a_book"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="22sp"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/button_border"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="100dp"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

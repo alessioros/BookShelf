@@ -40,9 +40,25 @@ public class HomeActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        Fragment fragment = HomeFragment.newInstance(false);
-        getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-        getSupportActionBar().setTitle("Home");
+        Bundle extras = getIntent().getExtras();
+
+        if(extras != null){
+
+            String F_TO_LOAD = extras.getString("FRAGMENT_TO_LOAD");
+
+            switch (F_TO_LOAD){
+                case "SHELF":
+                    Fragment fragment = ShelfFragment.newInstance();
+                    getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    getSupportActionBar().setTitle("Shelves");
+            }
+        }else{
+
+            Fragment fragment = HomeFragment.newInstance(false);
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+            getSupportActionBar().setTitle("Home");
+
+        }
 
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -53,7 +69,10 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            Fragment fragment = HomeFragment.newInstance(false);
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+            getSupportActionBar().setTitle("Home");
         }
     }
 
@@ -104,33 +123,25 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
 
             Fragment fragment = HomeFragment.newInstance(false);
-
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-
             getSupportActionBar().setTitle("Home");
 
         } else if (id == R.id.nav_library) {
 
             Fragment fragment = ShelfFragment.newInstance();
-
-            getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-            getSupportActionBar().setTitle("Library");
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).addToBackStack("shelves").commit();
+            getSupportActionBar().setTitle("Shelves");
 
         } else if (id == R.id.nav_scanbooks) {
 
             Fragment fragment = HomeFragment.newInstance(true);
-
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-
             getSupportActionBar().setTitle("Home");
 
         } else if (id == R.id.nav_settings) {
 
             Fragment fragment = SettingsFragment.newInstance();
-
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-
             getSupportActionBar().setTitle("Settings");
 
         }

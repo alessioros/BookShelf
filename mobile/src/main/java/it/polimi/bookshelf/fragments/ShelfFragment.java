@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import it.polimi.bookshelf.R;
+import it.polimi.bookshelf.adapters.MyShelfRecyclerViewAdapter;
 import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.data.DatabaseHandler;
 import it.polimi.bookshelf.model.Shelf;
@@ -42,7 +43,7 @@ public class ShelfFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_shelf_list, container, false);
+         View view = inflater.inflate(R.layout.fragment_shelf_list, container, false);
 
         mShelves = loadShelves();
 
@@ -99,7 +100,7 @@ public class ShelfFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-        recyclerView.setAdapter(new MyShelfRecyclerViewAdapter(mShelves, getActivity()));
+        recyclerView.setAdapter(new MyShelfRecyclerViewAdapter(mShelves, getActivity(), getActivity()));
 
         return view;
     }

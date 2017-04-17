@@ -43,6 +43,7 @@
         <activity
             android:name="it.polimi.bookshelf.activities.HomeActivity"
             android:label="@string/app_title"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,6 +55,20 @@
             android:name="it.polimi.bookshelf.activities.VerticalOrientationCA"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="it.polimi.bookshelf.activities.BookDetailActivity"
+            android:label="@string/title_activity_book_detail"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="it.polimi.bookshelf.activities.ShelfActivity"
+            android:label="@string/title_activity_shelf"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polimi.bookshelf.activities.HomeActivity" />
+        </activity>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:clearTaskOnLaunch="true"

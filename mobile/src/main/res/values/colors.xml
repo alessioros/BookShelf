@@ -10,6 +10,11 @@
     <color name="textPrimaryLight">#444444</color>
     <color name="textSecondary">#888888</color>
 
+    <!-- GENERAL COLORS -->
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="book_ruler_color">#63a4ff</color>
+
     <!-- SETTINGS -->
     <color name="set_ruler_color">#EEEEEE</color>
 </resources>

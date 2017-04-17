@@ -1,19 +1,7 @@
 [
     {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_fab_in.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_fab_out.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_fab_out.xml"
+        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_bottom_sheet_slide_out.xml"
     },
     {
         "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
@@ -36,70 +24,6 @@
         "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_fade_in.xml"
     },
     {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_popup_exit.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_snackbar_out.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_slide_out_top.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_fab_out.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_fab_out.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_fade_in.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_popup_enter.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_grow_fade_in_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_grow_fade_in_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_fab_in.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_bottom_sheet_slide_out.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_slide_out_top.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_bottom_sheet_slide_out.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_popup_enter.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_slide_in_top.xml"
-    },
-    {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_fade_out.xml"
-    },
-    {
         "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
         "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_popup_exit.xml"
     },
@@ -116,15 +40,27 @@
         "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_fade_out.xml"
     },
     {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_snackbar_in.xml"
+        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_slide_out_top.xml"
     },
     {
-        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/mobilecodegenerator3/it.polimi.mobilecodegenerator/src-gen/android/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
-        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_bottom_sheet_slide_in.xml"
+        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_fab_out.xml",
+        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_fab_out.xml"
+    },
+    {
+        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/alessiorossotti/.android/build-cache/afe69c7f09d7097099e52a6590298924eacca31f/output/res/anim/abc_grow_fade_in_from_bottom.xml"
     },
     {
         "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
         "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
+        "source": "/Users/alessiorossotti/.android/build-cache/8ca1937b688c04ac0862e2b51841ce7cdb00dd71/output/res/anim/design_fab_in.xml"
     }
 ]

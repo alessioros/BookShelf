@@ -1,4 +1,4 @@
-#Fri Apr 14 13:39:50 CEST 2017
+#Mon Apr 17 17:39:45 CEST 2017
 base.0=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6a10dff17fd08bc3bfe747c3c8a5812c6dd649f9
 renamed.1=classes2.dex
 renamed.0=classes.dex
