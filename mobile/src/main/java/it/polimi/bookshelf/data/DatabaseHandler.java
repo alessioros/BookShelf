@@ -3,8 +3,10 @@ package it.polimi.bookshelf.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,12 @@ public class DatabaseHandler {
         cv.put(DatabaseStrings.BOOK_DESCRIPTION, book.getDescription());
         cv.put(DatabaseStrings.BOOK_PAGECOUNT, book.getPageCount());
         cv.put(DatabaseStrings.BOOK_PUBLISHER, book.getPublisher());
-        cv.put(DatabaseStrings.BOOK_PUBLISHEDDATE, dateFormat.format(book.getPublishedDate()));
+        try{
+            cv.put(DatabaseStrings.BOOK_PUBLISHEDDATE, dateFormat.format(book.getPublishedDate()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         cv.put(DatabaseStrings.BOOK_IMGURL, book.getImgUrl());
         cv.put(DatabaseStrings.AUTHOR_ID, book.getAuthorID());
         cv.put(DatabaseStrings.SHELF_ID, book.getShelfID());
@@ -254,6 +261,7 @@ public class DatabaseHandler {
         }
         crs.close();
 
+        Log.v("DATABASE HANDLER","BOOK LIST SIZE: "+BookList.size());
         return BookList;
 
     }

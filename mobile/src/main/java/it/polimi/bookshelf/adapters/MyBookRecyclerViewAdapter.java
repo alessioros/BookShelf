@@ -1,12 +1,8 @@
 package it.polimi.bookshelf.adapters;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.model.Book;
-
-import java.util.List;
 
 public class MyBookRecyclerViewAdapter extends RecyclerView.Adapter<MyBookRecyclerViewAdapter.ViewHolder> {
 
@@ -47,7 +42,8 @@ public class MyBookRecyclerViewAdapter extends RecyclerView.Adapter<MyBookRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mBooks.get(position);
 
-        Picasso.with(context).load(holder.mItem.getImgUrl()).into(holder.mBookCover);
+        if(holder.mItem.getImgUrl() != null)
+            Picasso.with(context).load(holder.mItem.getImgUrl()).into(holder.mBookCover);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +93,7 @@ public class MyBookRecyclerViewAdapter extends RecyclerView.Adapter<MyBookRecycl
         return mBooks.size();
     }
 
+    @SuppressWarnings("WeakerAccess")
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final ImageView mBookCover;

@@ -1,5 +1,7 @@
 package it.polimi.bookshelf.utilities;
 
+import android.util.Log;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -10,6 +12,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.util.Date;
 
+import it.polimi.bookshelf.model.Author;
 import it.polimi.bookshelf.model.Book;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -55,12 +58,11 @@ public class AmazonFinder {
                         break;
 
                     case XmlPullParser.TEXT:
-                        //System.out.print(text);
+
                         text = xmlParser.getText();
                         break;
 
                     case XmlPullParser.END_TAG:
-                        //System.out.print("<"+name+"\n>");
 
                         if (name.equals(KEY_URL) && firstImage) {
 
@@ -69,7 +71,15 @@ public class AmazonFinder {
 
                         } else if (name.equals(KEY_AUTHOR)) {
 
-                            amazonBook.setAuthorID(Integer.parseInt(text));
+                            Author bookAuthor = new Author();
+
+                            try{
+                                bookAuthor.setName(text.split(" ")[0]);
+                                bookAuthor.setSurname(text.split(" ")[1]);
+                                amazonBook.setAuthorID(text);
+                            }catch (NumberFormatException e){
+                                Log.v("AMAZON EXCEPTION: ", "AUTHOR - "+e.toString());
+                            }
 
                         } else if (name.equals(KEY_PUBLISHER)) {
 
@@ -133,12 +143,26 @@ public class AmazonFinder {
 
         } catch (IOException e) {
             return null;
+        } catch(Exception e){
+            Log.v("AMAZON EXCEPTION ", ""+e.toString());
+            return null;
         }
 
+        try{
+            Log.v("AMAZON BOOK: ", "ISBN "+amazonBook.getISBN());
+            Log.v("AMAZON BOOK: ", "AUTHOR ID "+amazonBook.getAuthorID());
+            Log.v("AMAZON BOOK: ", "TITLE "+amazonBook.getTitle());
+            Log.v("AMAZON BOOK: ", "DESCRIPTION "+amazonBook.getDescription());
+            Log.v("AMAZON BOOK: ", "PUBDATE "+amazonBook.getPublishedDate().toString());
+            Log.v("AMAZON BOOK: ", "PUBLISHER "+amazonBook.getPublisher());
+            Log.v("AMAZON BOOK: ", "PAGE COUNT "+amazonBook.getPageCount());
+            Log.v("AMAZON BOOK: ", "IMG URL "+amazonBook.getImgUrl());
+        }catch (Exception e){
+            Log.v("EXCEPTION",e.toString());
+        }
         return amazonBook;
 
     }
-
 }
 
 

@@ -8,11 +8,9 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.LayerDrawable;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
@@ -21,7 +19,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -35,10 +32,9 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 import it.polimi.bookshelf.R;
+import it.polimi.bookshelf.data.DataHandler;
+import it.polimi.bookshelf.data.DatabaseHandler;
 import it.polimi.bookshelf.model.Author;
 import it.polimi.bookshelf.model.Book;
 
@@ -60,10 +56,10 @@ public class BookDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initActivityTransitions();
         setContentView(R.layout.activity_book_detail);
 
-        Log.v("ENTRATO", "CIAO CIAO");
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         //noinspection ConstantConditions
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -90,16 +86,6 @@ public class BookDetailActivity extends AppCompatActivity {
         ruler = findViewById(R.id.first_ruler);
         secondRuler = findViewById(R.id.ruler);
         authorRating = (RatingBar) findViewById(R.id.author_avgRating);
-
-        Typeface aller = Typeface.createFromAsset(getAssets(), "fonts/Aller_Rg.ttf");
-
-        bookTitle.setTypeface(aller);
-        bookAuthor.setTypeface(aller);
-        bookPageCount.setTypeface(aller);
-        bookDescription.setTypeface(aller);
-        bookPublisher.setTypeface(aller);
-        name_author.setTypeface(aller);
-        location_author.setTypeface(aller);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -139,7 +125,7 @@ public class BookDetailActivity extends AppCompatActivity {
             }
 
             try {
-                if (!book.getPublisher().equals("") && !book.getPublishedDate().toString().equals("")) {
+                if (!book.getPublisher().equals("") && book.getPublishedDate() != null) {
 
                     bookPublisher.setText(book.getPublisher() + " - " + book.getPublishedDate());
 
@@ -322,12 +308,13 @@ public class BookDetailActivity extends AppCompatActivity {
 
         try {
 
-            // add book to DynamoDB
+            DatabaseHandler dbH = new DataHandler(BookDetailActivity.this).getDatabaseHandler();
+            dbH.insertBook(book);
 
             Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.success_add), Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
-
+            e.printStackTrace();
             Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.error_add), Toast.LENGTH_SHORT).show();
 
         }

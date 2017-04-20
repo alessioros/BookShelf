@@ -35,16 +35,19 @@ import it.polimi.bookshelf.activities.BookDetailActivity;
 import it.polimi.bookshelf.activities.VerticalOrientationCA;
 import it.polimi.bookshelf.adapters.MyBookRecyclerViewAdapter;
 import it.polimi.bookshelf.data.DataHandler;
+import it.polimi.bookshelf.model.Author;
 import it.polimi.bookshelf.model.Book;
 import it.polimi.bookshelf.utilities.AmazonFinder;
 import it.polimi.bookshelf.utilities.GoogleBooksFinder;
+import it.polimi.bookshelf.utilities.ISBNDbFinder;
 import it.polimi.bookshelf.utilities.MergeBookSources;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class BookListFragment extends Fragment {
 
     private ArrayList<Book> mBooks;
-    private Book book, amazonBook, googleBook;
+    private Book book, amazonBook, googleBook, isbndbBook;
+    private Author author;
     private String GOOGLE_API = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
 
     public BookListFragment() {
@@ -97,62 +100,65 @@ public class BookListFragment extends Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
         //retrieve result of scanning - instantiate ZXing object
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         Toast toast;
 
-        Log.v("SCANSIONATO",scanningResult.toString());
         //check we have a valid result
-        if (scanningResult != null) {
+        if (scanningResult.getContents() != null) {
+
             //get content from Intent Result
             final String scanContent = scanningResult.getContents();
 
+            toast = Toast.makeText(getActivity(), "ISBN " + scanContent + " " + getResources().getString(R.string.found), Toast.LENGTH_SHORT);
+            toast.show();
 
-            if (scanContent == null) {
+            final ProgressDialog progressDialog =
+                    ProgressDialog.show(getActivity(),
+                            getResources().getString(R.string.wait),
+                            getResources().getString(R.string.search_for_books), true, false);
 
-                toast = Toast.makeText(getActivity(), getResources().getString(R.string.no_scandata), Toast.LENGTH_SHORT);
-                toast.show();
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-            } else {
+            new SearchForBooks(new OnBookSearchCompleted() {
+                @Override
+                public void onBookSearchCompleted() {
 
-                toast = Toast.makeText(getActivity(), "ISBN " + scanContent + " " + getResources().getString(R.string.found), Toast.LENGTH_SHORT);
-                toast.show();
+                    progressDialog.dismiss();
+                    if (book.getISBN() != null) {
 
-                final ProgressDialog progressDialog =
-                        ProgressDialog.show(getActivity(),
-                                getResources().getString(R.string.wait),
-                                getResources().getString(R.string.search_for_books), true, false);
-
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-
-                new SearchForBooks(new OnBookSearchCompleted() {
-                    @Override
-                    public void onBookSearchCompleted() {
-
-                        progressDialog.dismiss();
-                        if (book != null) {
-
-                            Intent bookIntent = new Intent(getActivity(), BookDetailActivity.class);
-                            bookIntent.putExtra("book", (Parcelable) book);
-                            bookIntent.putExtra("button", "add");
-                            getActivity().startActivity(bookIntent);
-
-                        } else {
-
-                            Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.booksfinder_error), Toast.LENGTH_SHORT);
-                            toast.show();
+                        try{
+                            Log.v("FINAL BOOK: AUTHOR ID ", ""+book.getAuthorID());
+                            Log.v("FINAL BOOK: TITLE ", ""+book.getTitle());
+                            Log.v("FINAL BOOK: DESC ", ""+book.getDescription());
+                            Log.v("FINAL BOOK: ISBN ", ""+book.getISBN());
+                            Log.v("FINAL BOOK: PUBDATE ", ""+book.getPublishedDate().toString());
+                            Log.v("FINAL BOOK: PUBLISHER ", ""+book.getPublisher());
+                            Log.v("FINAL BOOK: PAGE COUNT ", ""+book.getPageCount());
+                            Log.v("FINAL BOOK: IMG URL ", ""+book.getImgUrl());
+                        }catch (Exception e){
+                            Log.v("EXCEPTION ",e.toString());
                         }
-                    }
-                }).execute(scanContent);
 
-            }
+                        Intent bookIntent = new Intent(getActivity(), BookDetailActivity.class);
+                        bookIntent.putExtra("book", (Parcelable) book);
+                        bookIntent.putExtra("button", "add");
+                        getActivity().startActivity(bookIntent);
+
+                    } else {
+
+                        Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.booksfinder_error), Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
+            }).execute(scanContent);
 
         } else {
             //invalid scan data or scan canceled
             toast = Toast.makeText(getActivity(), getResources().getString(R.string.no_scandata), Toast.LENGTH_SHORT);
             toast.show();
         }
-
     }
 
     @Override
@@ -180,13 +186,18 @@ public class BookListFragment extends Fragment {
         }
 
         @Override
-        protected Void doInBackground(String... isbn) {
+        protected Void doInBackground(final String... isbn) {
 
             book = new Book();
-            // Try to find book info on Amazon, Google Books and LibraryThings
+
+            // Try to find book info on Amazon, Google Books and ISBNDB
             amazonBook = new AmazonFinder().getBook(isbn[0]);
             googleBook = new Book();
+            isbndbBook = new Book();
+
             String url = GOOGLE_API + isbn[0];
+            String ISBNDbKEY = "WHSHHYLX";
+            final String requestUrl = "http://isbndb.com/api/v2/json/"+ISBNDbKEY+"/book/"+isbn[0];
 
             // Make AsyncRequest to Google Books
             JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -196,11 +207,30 @@ public class BookListFragment extends Fragment {
 
                     googleBook = new GoogleBooksFinder().findBook(response, googleBook);
 
-                    //  Mix info from different sources
-                    //  Priority : Amazon -> Google -> LibraryThing
-                    book = new MergeBookSources().mergeBooks(amazonBook, googleBook, null);
+                    JsonObjectRequest jsObjRequest2 = new JsonObjectRequest(Request.Method.GET, requestUrl, null, new Response.Listener<JSONObject>() {
 
-                    SearchForBooks.this.onPostExecute();
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            isbndbBook = new ISBNDbFinder(getActivity()).getBook(response);
+                            book = new MergeBookSources().mergeBooks(amazonBook, googleBook, isbndbBook);
+                            SearchForBooks.this.onPostExecute();
+                        }
+
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            Log.v("NO ISBNDB", "");
+                            book = new MergeBookSources().mergeBooks(amazonBook, googleBook, null);
+                            SearchForBooks.this.onPostExecute();
+                        }
+                    });
+
+                    RequestQueue requestQueue2 = Volley.newRequestQueue(getActivity());
+                    requestQueue2.add(jsObjRequest2);
+
                 }
 
             }, new Response.ErrorListener() {
@@ -208,8 +238,30 @@ public class BookListFragment extends Fragment {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
-                    //  Google failed mix info from different sources
-                    book = new MergeBookSources().mergeBooks(amazonBook, null, null);
+                    JsonObjectRequest jsObjRequest2 = new JsonObjectRequest(Request.Method.GET, requestUrl, null, new Response.Listener<JSONObject>() {
+
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            Log.v("NO GOOGLE BOOK", "");
+                            isbndbBook = new ISBNDbFinder(getActivity()).getBook(response);
+                            book = new MergeBookSources().mergeBooks(amazonBook, null, isbndbBook);
+                            SearchForBooks.this.onPostExecute();
+                        }
+
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            Log.v("ONLY AMAZON", "");
+                            book = new MergeBookSources().mergeBooks(amazonBook, null, null);
+                            SearchForBooks.this.onPostExecute();
+                        }
+                    });
+
+                    RequestQueue requestQueue2 = Volley.newRequestQueue(getActivity());
+                    requestQueue2.add(jsObjRequest2);
                 }
             });
 

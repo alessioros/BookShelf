@@ -1,8 +1,11 @@
 package it.polimi.bookshelf.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
-public class Book {
+public class Book implements Parcelable{
 
     private String ISBN;
     private String Title;
@@ -11,14 +14,14 @@ public class Book {
     private String Publisher;
     private Date PublishedDate;
     private String ImgUrl;
-    private int AuthorID;
+    private String AuthorID;
     private int ShelfID;
 
     // default empty constructor
     public Book() {}
 
     // class constructor
-    public Book(String ISBN, String Title, String Description, String PageCount, String Publisher, Date PublishedDate, String ImgUrl, int AuthorID, int ShelfID) {
+    public Book(String ISBN, String Title, String Description, String PageCount, String Publisher, Date PublishedDate, String ImgUrl, String AuthorID, int ShelfID) {
         this.ISBN = ISBN;
         this.Title = Title;
         this.Description = Description;
@@ -29,6 +32,29 @@ public class Book {
         this.AuthorID = AuthorID;
         this.ShelfID = ShelfID;
     }
+
+    protected Book(Parcel in) {
+        ISBN = in.readString();
+        Title = in.readString();
+        Description = in.readString();
+        PageCount = in.readString();
+        Publisher = in.readString();
+        ImgUrl = in.readString();
+        AuthorID = in.readString();
+        ShelfID = in.readInt();
+    }
+
+    public static final Creator<Book> CREATOR = new Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel in) {
+            return new Book(in);
+        }
+
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
@@ -81,11 +107,11 @@ public class Book {
         return this.ImgUrl;
     }
 
-    public void setAuthorID(int AuthorID) {
+    public void setAuthorID(String AuthorID) {
         this.AuthorID = AuthorID;
     }
 
-    public int getAuthorID() {
+    public String getAuthorID() {
         return this.AuthorID;
     }
     public void setShelfID(int ShelfID) {
@@ -94,5 +120,22 @@ public class Book {
 
     public int getShelfID() {
         return this.ShelfID;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(ISBN);
+        dest.writeString(Title);
+        dest.writeString(Description);
+        dest.writeString(PageCount);
+        dest.writeString(Publisher);
+        dest.writeString(ImgUrl);
+        dest.writeString(AuthorID);
+        dest.writeInt(ShelfID);
     }
 }

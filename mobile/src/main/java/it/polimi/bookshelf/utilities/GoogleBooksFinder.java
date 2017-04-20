@@ -1,5 +1,7 @@
 package it.polimi.bookshelf.utilities;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +37,7 @@ public class GoogleBooksFinder {
 
     public Book findBook(JSONObject response, Book book) {
 
+        Log.v("GOOGLE RESPONSE", response.toString());
         try {
 
             JSONArray jArray = response.getJSONArray(KEY_ITEMS);
@@ -88,10 +91,10 @@ public class GoogleBooksFinder {
             try {
                 JSONArray authors = volumeInfo.getJSONArray(KEY_AUTHORS);
 
-                book.setAuthorID(Integer.parseInt(URLDecoder.decode(authors.getString(0), UTF8)));
+                book.setAuthorID(URLDecoder.decode(authors.getString(0), UTF8));
 
             } catch (Exception e) {
-                book.setAuthorID(0);
+                book.setAuthorID("0");
             }
 
             // ----- PUBLISHER -----
@@ -120,9 +123,22 @@ public class GoogleBooksFinder {
 
         } catch (JSONException e) {
 
+            e.printStackTrace();
             return null;
         }
 
+        try{
+            Log.v("GOOGLE BOOK: ", "ISBN"+book.getISBN());
+            Log.v("GOOGLE BOOK: ", "AUTHOR ID"+book.getAuthorID());
+            Log.v("GOOGLE BOOK:", "TITLE"+book.getTitle());
+            Log.v("GOOGLE BOOK:", "DESCRIPTION"+book.getDescription());
+            Log.v("GOOGLE BOOK:", "PUBDATE"+book.getPublishedDate().toString());
+            Log.v("GOOGLE BOOK:", "PUBLISHER"+book.getPublisher());
+            Log.v("GOOGLE BOOK:", "PAGE COUNT"+book.getPageCount());
+            Log.v("GOOGLE BOOK:", "IMG URL"+book.getImgUrl());
+        }catch (Exception e){
+            Log.v("EXCEPTION",e.toString());
+        }
         return book;
     }
 
