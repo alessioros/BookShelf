@@ -1,4 +1,4 @@
-#Mon Apr 17 17:39:43 CEST 2017
+#Fri Apr 21 13:57:36 CEST 2017
 file.2=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/core-3.2.1_d147d1c10c1ab28dbf26523c68227d18aa163049/classes.dex
 base.2=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/core-3.2.1_d147d1c10c1ab28dbf26523c68227d18aa163049
 file.1=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4e7da46355a35249100390ba22b8048b752ae983/classes.dex
