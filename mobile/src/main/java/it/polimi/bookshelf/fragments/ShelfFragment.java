@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.adapters.MyShelfRecyclerViewAdapter;
@@ -119,6 +120,14 @@ public class ShelfFragment extends Fragment {
     public ArrayList<Shelf> loadShelves() {
 
         DataHandler dh = new DataHandler(getActivity().getApplicationContext());
-        return (ArrayList<Shelf>) dh.getDatabaseHandler().getShelfList();
+        ArrayList<Shelf> shelves = (ArrayList<Shelf>) dh.getDatabaseHandler().getShelfList();
+
+        for (Shelf shelf : shelves){
+
+            int bookListSize = dh.getDatabaseHandler().getBookList(shelf.getName()).size();
+            shelf.setBookCount(bookListSize);
+        }
+
+        return shelves;
     }
 }

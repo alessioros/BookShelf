@@ -3,7 +3,6 @@ package it.polimi.bookshelf.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
@@ -141,6 +140,7 @@ public class DatabaseHandler {
 
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
+
             Book.setTitle(crs.getString(0));
             Book.setDescription(crs.getString(1));
             Book.setPageCount(crs.getString(2));
@@ -210,7 +210,8 @@ public class DatabaseHandler {
 
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
-            shelf.setBookCount(crs.getInt(0));
+            shelf.setName(crs.getString(0));
+            shelf.setBookCount(crs.getInt(1));
             crs.moveToNext();
         }
         crs.close();
@@ -243,27 +244,75 @@ public class DatabaseHandler {
 
             Book Book = new Book();
 
-            Book.setTitle(crs.getString(0));
-            Book.setDescription(crs.getString(1));
-            Book.setPageCount(crs.getString(2));
-            Book.setPublisher(crs.getString(3));
+            Book.setISBN(crs.getString(0));
+            Book.setTitle(crs.getString(1));
+            Book.setDescription(crs.getString(2));
+            Book.setPageCount(crs.getString(3));
+            Book.setPublisher(crs.getString(4));
             try {
-                date = dateFormat.parse(crs.getString(4));
+                date = dateFormat.parse(crs.getString(5));
                 Book.setPublishedDate(date);
-            } catch (ParseException e) {
+            } catch (Exception e) {
                 Book.setPublishedDate(null);
                 e.printStackTrace();
             }
-            Book.setImgUrl(crs.getString(5));
+            Book.setImgUrl(crs.getString(6));
 
             BookList.add(Book);
             crs.moveToNext();
         }
         crs.close();
 
-        Log.v("DATABASE HANDLER","BOOK LIST SIZE: "+BookList.size());
         return BookList;
 
+    }
+
+    public List<Book> getBookList(String shelfName) {
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+
+        Cursor crs;
+        List<Book> BookList = new ArrayList<>();
+
+        String tableName = DatabaseStrings.TBL_BOOK;
+
+        try {
+            String SQL_QUERY = "SELECT * FROM " + tableName + " WHERE " + DatabaseStrings.SHELF_ID + " =? ";
+            crs = db.rawQuery(SQL_QUERY, new String[]{shelfName});
+        } catch (SQLiteException sqle) {
+            sqle.printStackTrace();
+            return null;
+        }
+
+        // choose your date format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ITALY);
+        Date date;
+
+        crs.moveToFirst();
+        while (!crs.isAfterLast()) {
+
+            Book Book = new Book();
+
+            Book.setISBN(crs.getString(0));
+            Book.setTitle(crs.getString(1));
+            Book.setDescription(crs.getString(2));
+            Book.setPageCount(crs.getString(3));
+            Book.setPublisher(crs.getString(4));
+            try {
+                Log.v("DATE"," "+crs.getString(5));
+                date = dateFormat.parse(crs.getString(5));
+                Book.setPublishedDate(date);
+            } catch (Exception e) {
+                Book.setPublishedDate(null);
+                e.printStackTrace();
+            }
+            Book.setImgUrl(crs.getString(6));
+
+            BookList.add(Book);
+            crs.moveToNext();
+        }
+        crs.close();
+
+        return BookList;
     }
 
     public List<Author> getAuthorList() {

@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "491532871260",
+    "firebase_url": "https://testcodegen-e6dee.firebaseio.com",
+    "project_id": "testcodegen-e6dee",
+    "storage_bucket": "testcodegen-e6dee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491532871260:android:196f2b1d2cd252b7",
+        "android_client_info": {
+          "package_name": "it.polimi.bookshelf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491532871260-3p2qmhh4r6dabbb8dbte73qergf4t4p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlW26dSqLzWg0Cn2eBlQEvYBonugq22DQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491532871260:android:e36a3522df2fd570",
+        "android_client_info": {
+          "package_name": "it.polimi.bookshelf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491532871260-3p2qmhh4r6dabbb8dbte73qergf4t4p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlW26dSqLzWg0Cn2eBlQEvYBonugq22DQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

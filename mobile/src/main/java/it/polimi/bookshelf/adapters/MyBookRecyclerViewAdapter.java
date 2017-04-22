@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class MyBookRecyclerViewAdapter extends RecyclerView.Adapter<MyBookRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_shelf, parent, false);
+                .inflate(R.layout.fragment_book, parent, false);
 
         return new ViewHolder(view);
     }
@@ -63,13 +64,13 @@ public class MyBookRecyclerViewAdapter extends RecyclerView.Adapter<MyBookRecycl
                 builder.setTitle("Confirm Delete");
 
                 final TextView dialogMessage = (TextView) promptsView.findViewById(R.id.alert_message);
-                dialogMessage.setText("Delete shelf: "+holder.mItem.getTitle()+"?");
+                dialogMessage.setText("Delete book: "+holder.mItem.getTitle()+"?");
 
                 builder.setPositiveButton(holder.mView.getContext().getResources().getString(R.string.alert_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        dH.getDatabaseHandler().deleteShelf(holder.mItem.getTitle());
+                        dH.getDatabaseHandler().deleteBook(holder.mItem.getISBN());
                         mBooks.remove(holder.getAdapterPosition());
                         notifyItemRemoved(holder.getAdapterPosition());
                     }

@@ -23,7 +23,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +44,6 @@ public class BookDetailActivity extends AppCompatActivity {
     private static int REDIRECT_TIME_OUT = 500;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private static final String TAG = "BookDetail";
-    private RatingBar authorRating;
     private View ruler, secondRuler;
     private boolean loadUserFinished = false, loadRevFinished = false;
     private boolean fromUserProfile = false;
@@ -77,7 +75,6 @@ public class BookDetailActivity extends AppCompatActivity {
         TextView bookDescription = (TextView) findViewById(R.id.book_description);
         TextView bookPublisher = (TextView) findViewById(R.id.book_publisher);
         final TextView name_author = (TextView) findViewById(R.id.name_author);
-        final TextView location_author = (TextView) findViewById(R.id.location_author);
         final CircularImageView image_author = (CircularImageView) findViewById(R.id.author_image);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -85,12 +82,12 @@ public class BookDetailActivity extends AppCompatActivity {
         authorInfoLayout = (RelativeLayout) findViewById(R.id.layout_author);
         ruler = findViewById(R.id.first_ruler);
         secondRuler = findViewById(R.id.ruler);
-        authorRating = (RatingBar) findViewById(R.id.author_avgRating);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
 
             book = i.getParcelableExtra("book");
+            book.setShelfID(i.getStringExtra("shelf_name"));
 
             try {
                 if (book.getDescription().length() > 500) {
@@ -103,7 +100,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 }
 
             } catch (NullPointerException e) {
-
+                e.printStackTrace();
             }
 
             bookAuthor.setText(book.getAuthorID());
@@ -185,7 +182,6 @@ public class BookDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
                     deleteBook();
-
                 }
             });
         } else if (i.getStringExtra("button").equals("add")) {
@@ -199,7 +195,6 @@ public class BookDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
                     addBook();
-
                 }
             });
 
@@ -210,8 +205,6 @@ public class BookDetailActivity extends AppCompatActivity {
                     addBook();
                 }
             });
-
-
         }
     }
 
@@ -241,7 +234,6 @@ public class BookDetailActivity extends AppCompatActivity {
         supportStartPostponedEnterTransition();
 
         updateButtonBackground((Button) findViewById(R.id.button_book_detail), palette);
-        updateRatingBackground(palette);
     }
 
     private void updateBackground(FloatingActionButton fab, Palette palette) {
@@ -260,16 +252,6 @@ public class BookDetailActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             button.setBackgroundTintList(ColorStateList.valueOf(vibrantColor));
         }
-    }
-
-    private void updateRatingBackground(Palette palette) {
-
-        int vibrantColor = palette.getVibrantColor(ContextCompat.getColor(this, R.color.colorAccent));
-
-        LayerDrawable stars = (LayerDrawable) authorRating.getProgressDrawable();
-        stars.getDrawable(0).setColorFilter(ContextCompat.getColor(BookDetailActivity.this, R.color.colorPrimaryLight), PorterDuff.Mode.SRC_ATOP);
-        stars.getDrawable(1).setColorFilter(vibrantColor, PorterDuff.Mode.SRC_ATOP);
-        stars.getDrawable(2).setColorFilter(vibrantColor, PorterDuff.Mode.SRC_ATOP);
     }
 
     private void deleteBook() {
@@ -305,13 +287,17 @@ public class BookDetailActivity extends AppCompatActivity {
 
     private void addBook() {
 
-
         try {
-
             DatabaseHandler dbH = new DataHandler(BookDetailActivity.this).getDatabaseHandler();
-            dbH.insertBook(book);
 
-            Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.success_add), Toast.LENGTH_SHORT).show();
+            if(dbH.queryBook(book.getISBN()).getISBN() != null){
+                Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.book_alr_added), Toast.LENGTH_SHORT).show();
+            }else{
+                dbH.insertBook(book);
+
+                Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.success_add), Toast.LENGTH_SHORT).show();
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -324,7 +310,6 @@ public class BookDetailActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-
 
                 finish();
             }

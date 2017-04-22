@@ -1,6 +1,7 @@
 package it.polimi.bookshelf.activities;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -46,11 +47,13 @@ public class HomeActivity extends AppCompatActivity
 
             String F_TO_LOAD = extras.getString("FRAGMENT_TO_LOAD");
 
-            switch (F_TO_LOAD){
-                case "SHELF":
-                    Fragment fragment = ShelfFragment.newInstance();
-                    getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-                    getSupportActionBar().setTitle("Shelves");
+            if (F_TO_LOAD != null) {
+                switch (F_TO_LOAD){
+                    case "SHELF":
+                        Fragment fragment = ShelfFragment.newInstance();
+                        getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+                        getSupportActionBar().setTitle("Shelves");
+                }
             }
         }else{
 
@@ -144,6 +147,9 @@ public class HomeActivity extends AppCompatActivity
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
             getSupportActionBar().setTitle("Settings");
 
+        } else if (id == R.id.nav_logout) {
+
+            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

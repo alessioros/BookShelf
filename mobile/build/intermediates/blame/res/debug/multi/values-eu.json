@@ -6,9 +6,28 @@
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
-                    "startOffset": 55,
+                    "startOffset": 105,
+                    "endColumn": 200,
+                    "endOffset": 301
+                },
+                "from": {
+                    "file": "/Users/alessiorossotti/.android/build-cache/27dc8b53bef8521a40b8bc7e30d85dfeb581de67/output/res/values-eu/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 200,
+                        "endOffset": 485
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 306,
                     "endColumn": 63,
-                    "endOffset": 114
+                    "endOffset": 365
                 },
                 "from": {
                     "file": "/Users/alessiorossotti/.android/build-cache/2e507aa8c436202b125503d2b5fa86834182c144/output/res/values-eu/values-eu.xml",
@@ -23,11 +42,11 @@
             },
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 119,
+                    "startOffset": 370,
                     "endColumn": 48,
-                    "endOffset": 163
+                    "endOffset": 414
                 },
                 "from": {
                     "file": "/Users/alessiorossotti/.android/build-cache/2e507aa8c436202b125503d2b5fa86834182c144/output/res/values-eu/values-eu.xml",
@@ -42,11 +61,11 @@
             },
             {
                 "to": {
-                    "startLine": 4,
+                    "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 168,
+                    "startOffset": 419,
                     "endColumn": 147,
-                    "endOffset": 311
+                    "endOffset": 562
                 },
                 "from": {
                     "file": "/Users/alessiorossotti/.android/build-cache/2e507aa8c436202b125503d2b5fa86834182c144/output/res/values-eu/values-eu.xml",
@@ -61,11 +80,11 @@
             },
             {
                 "to": {
-                    "startLine": 5,
+                    "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 316,
+                    "startOffset": 567,
                     "endColumn": 111,
-                    "endOffset": 423
+                    "endOffset": 674
                 },
                 "from": {
                     "file": "/Users/alessiorossotti/.android/build-cache/2e507aa8c436202b125503d2b5fa86834182c144/output/res/values-eu/values-eu.xml",

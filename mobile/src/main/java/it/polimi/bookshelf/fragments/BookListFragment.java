@@ -49,6 +49,7 @@ public class BookListFragment extends Fragment {
     private Book book, amazonBook, googleBook, isbndbBook;
     private Author author;
     private String GOOGLE_API = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
+    private String shelfName;
 
     public BookListFragment() {
     }
@@ -69,6 +70,7 @@ public class BookListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_book_list, container, false);
 
+        shelfName = getArguments().getString("shelf_name");
         mBooks = loadBooks();
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
@@ -144,6 +146,7 @@ public class BookListFragment extends Fragment {
                         Intent bookIntent = new Intent(getActivity(), BookDetailActivity.class);
                         bookIntent.putExtra("book", (Parcelable) book);
                         bookIntent.putExtra("button", "add");
+                        bookIntent.putExtra("shelf_name", shelfName);
                         getActivity().startActivity(bookIntent);
 
                     } else {
@@ -174,7 +177,7 @@ public class BookListFragment extends Fragment {
     public ArrayList<Book> loadBooks() {
 
         DataHandler dh = new DataHandler(getActivity().getApplicationContext());
-        return (ArrayList<Book>) dh.getDatabaseHandler().getBookList();
+        return (ArrayList<Book>) dh.getDatabaseHandler().getBookList(shelfName);
     }
 
     @SuppressWarnings("WeakerAccess")

@@ -23,16 +23,18 @@ public class ShelfActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Fragment fragment = BookListFragment.newInstance();
-        getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+        Bundle bundle = new Bundle();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             getSupportActionBar().setTitle(extras.getString("shelf_name"));
-
+            bundle.putString("shelf_name", extras.getString("shelf_name"));
         }
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Fragment fragment = BookListFragment.newInstance();
+        fragment.setArguments(bundle);
+        getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
 
     }
 

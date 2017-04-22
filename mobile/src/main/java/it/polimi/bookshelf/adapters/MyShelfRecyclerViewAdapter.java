@@ -17,20 +17,20 @@ import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.activities.ShelfActivity;
 import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.fragments.BookListFragment;
+import it.polimi.bookshelf.model.Book;
 import it.polimi.bookshelf.model.Shelf;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MyShelfRecyclerViewAdapter extends RecyclerView.Adapter<MyShelfRecyclerViewAdapter.ViewHolder> {
 
     private final List<Shelf> mShelves;
     private DataHandler dH;
-    private Context context;
     private Activity activity;
 
     public MyShelfRecyclerViewAdapter(List<Shelf> shelves, Context context, Activity activity) {
         mShelves = shelves;
-        this.context = context;
         this.activity = activity;
         dH = new DataHandler(context);
     }
@@ -77,9 +77,19 @@ public class MyShelfRecyclerViewAdapter extends RecyclerView.Adapter<MyShelfRecy
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        dH.getDatabaseHandler().deleteShelf(holder.mItem.getName());
-                        mShelves.remove(holder.getAdapterPosition());
-                        notifyItemRemoved(holder.getAdapterPosition());
+                        try{
+                            List<Book> shelfBooks = dH.getDatabaseHandler().getBookList(holder.mItem.getName());
+                            dH.getDatabaseHandler().deleteShelf(holder.mItem.getName());
+                            mShelves.remove(holder.getAdapterPosition());
+                            notifyItemRemoved(holder.getAdapterPosition());
+
+                            for(Book book : shelfBooks){
+                                dH.getDatabaseHandler().deleteBook(book.getISBN());
+                            }
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
                 });
                 builder.setNegativeButton(holder.mView.getContext().getString(R.string.alert_cancel), new DialogInterface.OnClickListener() {
@@ -101,6 +111,7 @@ public class MyShelfRecyclerViewAdapter extends RecyclerView.Adapter<MyShelfRecy
         return mShelves.size();
     }
 
+    @SuppressWarnings("WeakerAccess")
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mShelfName;

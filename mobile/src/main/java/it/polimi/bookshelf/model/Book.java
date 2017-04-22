@@ -15,13 +15,13 @@ public class Book implements Parcelable{
     private Date PublishedDate;
     private String ImgUrl;
     private String AuthorID;
-    private int ShelfID;
+    private String ShelfID;
 
     // default empty constructor
     public Book() {}
 
     // class constructor
-    public Book(String ISBN, String Title, String Description, String PageCount, String Publisher, Date PublishedDate, String ImgUrl, String AuthorID, int ShelfID) {
+    public Book(String ISBN, String Title, String Description, String PageCount, String Publisher, Date PublishedDate, String ImgUrl, String AuthorID, String ShelfID) {
         this.ISBN = ISBN;
         this.Title = Title;
         this.Description = Description;
@@ -41,7 +41,7 @@ public class Book implements Parcelable{
         Publisher = in.readString();
         ImgUrl = in.readString();
         AuthorID = in.readString();
-        ShelfID = in.readInt();
+        ShelfID = in.readString();
     }
 
     public static final Creator<Book> CREATOR = new Creator<Book>() {
@@ -114,11 +114,11 @@ public class Book implements Parcelable{
     public String getAuthorID() {
         return this.AuthorID;
     }
-    public void setShelfID(int ShelfID) {
+    public void setShelfID(String ShelfID) {
         this.ShelfID = ShelfID;
     }
 
-    public int getShelfID() {
+    public String getShelfID() {
         return this.ShelfID;
     }
 
@@ -136,6 +136,6 @@ public class Book implements Parcelable{
         dest.writeString(Publisher);
         dest.writeString(ImgUrl);
         dest.writeString(AuthorID);
-        dest.writeInt(ShelfID);
+        dest.writeString(ShelfID);
     }
 }
