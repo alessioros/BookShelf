@@ -1,6 +1,9 @@
 package it.polimi.bookshelf.objects;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable{
 
     public String access_email;
     public String password;
@@ -15,6 +18,25 @@ public class User {
         this.user_name = user_name;
         this.user_surname = user_surname;
     }
+
+    protected User(Parcel in) {
+        access_email = in.readString();
+        password = in.readString();
+        user_name = in.readString();
+        user_surname = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getAccess_email() {
         return access_email;
@@ -46,5 +68,18 @@ public class User {
 
     public void setUser_surname(String user_surname) {
         this.user_surname = user_surname;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(access_email);
+        dest.writeString(password);
+        dest.writeString(user_name);
+        dest.writeString(user_surname);
     }
 }

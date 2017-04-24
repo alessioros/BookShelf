@@ -19,16 +19,16 @@ public final class R {
         public static final int zxing_viewfinder_mask = 0x7f01017e;
     }
     public static final class color {
-        public static final int zxing_custom_possible_result_points = 0x7f0d0055;
-        public static final int zxing_custom_result_view = 0x7f0d0056;
-        public static final int zxing_custom_viewfinder_laser = 0x7f0d0057;
-        public static final int zxing_custom_viewfinder_mask = 0x7f0d0058;
-        public static final int zxing_possible_result_points = 0x7f0d0059;
-        public static final int zxing_result_view = 0x7f0d005a;
-        public static final int zxing_status_text = 0x7f0d005b;
-        public static final int zxing_transparent = 0x7f0d005c;
-        public static final int zxing_viewfinder_laser = 0x7f0d005d;
-        public static final int zxing_viewfinder_mask = 0x7f0d005e;
+        public static final int zxing_custom_possible_result_points = 0x7f0d005c;
+        public static final int zxing_custom_result_view = 0x7f0d005d;
+        public static final int zxing_custom_viewfinder_laser = 0x7f0d005e;
+        public static final int zxing_custom_viewfinder_mask = 0x7f0d005f;
+        public static final int zxing_possible_result_points = 0x7f0d0060;
+        public static final int zxing_result_view = 0x7f0d0061;
+        public static final int zxing_status_text = 0x7f0d0062;
+        public static final int zxing_transparent = 0x7f0d0063;
+        public static final int zxing_viewfinder_laser = 0x7f0d0064;
+        public static final int zxing_viewfinder_mask = 0x7f0d0065;
     }
     public static final class id {
         public static final int centerCrop = 0x7f0e0050;
@@ -48,8 +48,8 @@ public final class R {
         public static final int zxing_viewfinder_view = 0x7f0e00e0;
     }
     public static final class layout {
-        public static final int zxing_barcode_scanner = 0x7f04004d;
-        public static final int zxing_capture = 0x7f04004e;
+        public static final int zxing_barcode_scanner = 0x7f04004e;
+        public static final int zxing_capture = 0x7f04004f;
     }
     public static final class raw {
         public static final int zxing_beep = 0x7f070002;

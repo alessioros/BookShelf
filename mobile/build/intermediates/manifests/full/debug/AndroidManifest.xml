@@ -55,13 +55,17 @@
         android:windowSoftInputMode="stateVisible" >
         <activity
             android:name="it.polimi.bookshelf.activities.LoginActivity"
-            android:label="@string/app_title" >
+            android:label="@string/app_title"
+            android:theme="@style/AppTheme.Dark" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="it.polimi.bookshelf.activities.RegisterActivity"
+            android:theme="@style/AppTheme.Dark" />
         <activity
             android:name="it.polimi.bookshelf.activities.HomeActivity"
             android:label="@string/app_title"
