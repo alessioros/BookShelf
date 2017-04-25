@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
                         final CloudHandler cdH = new DataHandler(RegisterActivity.this).getCloudHandler();
                         DatabaseReference ref = cdH.getReference("users");
 
-                        ref.child("-JlvccKbEAyoLL9dc9_v").addListenerForSingleValueEvent(new ValueEventListener() {
+                        ref.child(email).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot snapshot) {
                                 if (snapshot.exists()) {
