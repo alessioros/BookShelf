@@ -79,6 +79,23 @@ public class CloudHandler {
         return true;
     }
 
+    /*
+    * allows to update an object in the database
+    * @param object fields
+    */
+    public boolean updateUser(User user) {
+
+        try{
+            getReference("users").child(user.getAccess_email().replace(".","*")).setValue(user);
+            Log.v("UPDATING USER", user.toString());
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public DatabaseReference getUser(String access_email) {
 
         Log.v("FIREBASE","GETTING USER... "+access_email);

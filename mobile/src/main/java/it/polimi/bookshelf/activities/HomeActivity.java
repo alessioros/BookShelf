@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity
         TextView booksCount = (TextView) headerView.findViewById(R.id.textViewBookCount);
 
         userInfo.setText(pH.getUser_name()+" "+pH.getUser_surname());
-        booksCount.setText(pH.getNum_books()+" books");
+        booksCount.setText(pH.getUser_book_count()+" books");
     }
 
     @Override

@@ -20,19 +20,12 @@
             android:src="@drawable/bookshelf_logo" />
 
         <!--  Name Label -->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/input_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:inputType="textCapWords" />
-        </android.support.design.widget.TextInputLayout>
+            android:hint="Name"
+            android:inputType="textCapWords" />
 
         <!--  Surname Label -->
         <EditText
@@ -72,6 +65,8 @@
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
             android:padding="12dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/white"
             android:text="Create Account" />
 
         <TextView

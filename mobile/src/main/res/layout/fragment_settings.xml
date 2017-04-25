@@ -15,6 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dispinfo_marginleft"
+            android:layout_marginStart="@dimen/dispinfo_marginleft"
             android:layout_marginTop="@dimen/dispinfo_margintop"
             android:text="@string/displayinfo_title"
             android:textColor="@color/colorPrimary"
@@ -96,9 +97,83 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/surname_ruler"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/set_usersurname"
+            android:background="@color/set_ruler_color" />
+
+        <LinearLayout
+            android:id="@+id/set_useremail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/surname_ruler"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/settings_padding"
+            android:paddingLeft="@dimen/settings_paddingleft"
+            android:paddingStart="@dimen/settings_paddingleft"
+            android:paddingTop="@dimen/settings_padding">
+
+            <TextView
+                android:id="@+id/useremail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/useremail_title"
+                android:textColor="@color/textPrimaryLight"
+                android:textSize="@dimen/gen_title_txtsize" />
+
+            <TextView
+                android:id="@+id/set_useremail_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/subtitle_marginleft"
+                android:layout_marginStart="@dimen/subtitle_marginleft"
+                android:textColor="@color/textSecondary"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/email_ruler"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/set_useremail"
+            android:background="@color/set_ruler_color" />
+
+        <LinearLayout
+            android:id="@+id/set_userpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/email_ruler"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/settings_padding"
+            android:paddingLeft="@dimen/settings_paddingleft"
+            android:paddingStart="@dimen/settings_paddingleft"
+            android:paddingTop="@dimen/settings_padding">
+
+            <TextView
+                android:id="@+id/userpassword_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/userpassword_title"
+                android:textColor="@color/textPrimaryLight"
+                android:textSize="@dimen/gen_title_txtsize" />
+
+            <TextView
+                android:id="@+id/set_userpassword_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/subtitle_marginleft"
+                android:layout_marginStart="@dimen/subtitle_marginleft"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/gen_text_txtsize" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/set_userpassword"
             android:background="@color/set_ruler_color" />
 
     </RelativeLayout>

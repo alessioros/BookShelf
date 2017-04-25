@@ -13,47 +13,59 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindView;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.activities.HomeActivity;
-import it.polimi.bookshelf.data.PreferenceHandler;
+import it.polimi.bookshelf.data.DataHandler;
+import it.polimi.bookshelf.objects.User;
 
 public class SettingsFragment extends Fragment {
 
-    private TextView userName, userSurname;
-    private LinearLayout setUserName,setUserSurname;
+    @BindView(R.id.set_username_text) TextView userName;
+    @BindView(R.id.set_usersurname_text) TextView userSurname;
+    @BindView(R.id.set_useremail_text) TextView userEmail;
+    @BindView(R.id.set_userpassword_text) TextView userPassword;
+    @BindView(R.id.set_username) LinearLayout setUserName;
+    @BindView(R.id.set_usersurname) LinearLayout setUserSurname;
+    @BindView(R.id.set_useremail) LinearLayout setUserEmail;
+    @BindView(R.id.set_userpassword) LinearLayout setUserPassword;
+
+    private Unbinder unbinder;
+    private User user;
+    private DataHandler dataHandler;
 
     public SettingsFragment() {
         // Required empty public constructor
     }
 
     public static SettingsFragment newInstance() {
-        SettingsFragment fragment = new SettingsFragment();
 
-        return fragment;
+        return new SettingsFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        final PreferenceHandler pH = new PreferenceHandler(getActivity());
+        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
-        userName = (TextView) view.findViewById(R.id.set_username_text);
-        userSurname = (TextView) view.findViewById(R.id.set_usersurname_text);
+        dataHandler = new DataHandler(getActivity());
+        user = dataHandler.getPreferencesHandler().getUser();
 
-        setUserName = (LinearLayout) view.findViewById(R.id.set_username);
-        setUserSurname = (LinearLayout) view.findViewById(R.id.set_usersurname);
-
-        userName.setText(pH.getUser_name());
-        userSurname.setText(pH.getUser_surname());
+        userName.setText(user.getUser_name());
+        userSurname.setText(user.getUser_surname());
+        userEmail.setText(user.getAccess_email());
+        userPassword.setText(user.getPassword());
 
         setUserName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,18 +86,26 @@ public class SettingsFragment extends Fragment {
 
                         String nameString = dialogEdit.getText().toString();
 
-                        if (!nameString.equals("") && isOnlyLetters(nameString)) {
+                        if (!nameString.isEmpty() && isOnlyLetters(nameString)) {
 
-                            pH.setUser_name(nameString);
-                            userName.setText(pH.getUser_name());
-                            ((HomeActivity) getActivity()).refreshHeader();
+                            try{
+                                dataHandler.getPreferencesHandler().setUser_surname(nameString);
+                                user.setUser_name(nameString);
+                                dataHandler.getCloudHandler().updateUser(user);
+                                userName.setText(nameString);
+                                ((HomeActivity) getActivity()).refreshHeader();
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.invalid_name), Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
 
                         } else {
 
                             Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.invalid_name), Toast.LENGTH_SHORT);
                             toast.show();
                         }
-
                     }
                 });
                 builder.setNegativeButton(getResources().getString(R.string.alert_cancel), new DialogInterface.OnClickListener() {
@@ -119,15 +139,132 @@ public class SettingsFragment extends Fragment {
 
                         String surnameString = dialogEdit.getText().toString();
 
-                        if (!surnameString.equals("") && isOnlyLetters(surnameString)) {
+                        if (!surnameString.isEmpty() && isOnlyLetters(surnameString)) {
 
-                            pH.setUser_surname(surnameString);
-                            userSurname.setText(pH.getUser_surname());
-                            ((HomeActivity) getActivity()).refreshHeader();
+                            try{
+                                dataHandler.getPreferencesHandler().setUser_surname(surnameString);
+                                user.setUser_surname(surnameString);
+                                dataHandler.getCloudHandler().updateUser(user);
+                                userSurname.setText(surnameString);
+                                ((HomeActivity) getActivity()).refreshHeader();
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.invalid_surname), Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
 
                         } else {
 
                             Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.invalid_surname), Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+
+                    }
+                });
+                builder.setNegativeButton(getResources().getString(R.string.alert_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+        });
+
+        setUserEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(getResources().getString(R.string.change_email));
+
+                View promptsView = LayoutInflater.from(getActivity()).inflate(R.layout.custom_settings_dialog, null);
+                builder.setView(promptsView);
+
+                final EditText dialogEdit = (EditText) promptsView.findViewById(R.id.dialog_edittxt);
+
+                dialogEdit.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
+                builder.setPositiveButton(getResources().getString(R.string.alert_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        String emailString = dialogEdit.getText().toString();
+
+                        if (!emailString.isEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
+
+                            try{
+                                dataHandler.getPreferencesHandler().setUser_access_email(emailString);
+                                user.setAccess_email(emailString);
+                                dataHandler.getCloudHandler().updateUser(user);
+                                userEmail.setText(emailString);
+                                ((HomeActivity) getActivity()).refreshHeader();
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.invalid_email), Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
+
+                        } else {
+
+                            Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.invalid_email), Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+
+                    }
+                });
+                builder.setNegativeButton(getResources().getString(R.string.alert_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+        });
+
+        setUserPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(getResources().getString(R.string.change_password));
+
+                View promptsView = LayoutInflater.from(getActivity()).inflate(R.layout.custom_settings_dialog, null);
+                builder.setView(promptsView);
+
+                final EditText dialogEdit = (EditText) promptsView.findViewById(R.id.dialog_edittxt);
+
+                dialogEdit.setInputType(InputType.TYPE_CLASS_TEXT);
+
+                builder.setPositiveButton(getResources().getString(R.string.alert_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        String passwordString = dialogEdit.getText().toString();
+
+                        if (!passwordString.isEmpty() && passwordString.length() < 4 || passwordString.length() > 15) {
+
+                            try{
+                                dataHandler.getPreferencesHandler().setUser_password(passwordString);
+                                user.setPassword(passwordString);
+                                dataHandler.getCloudHandler().updateUser(user);
+                                userEmail.setText(passwordString);
+                                ((HomeActivity) getActivity()).refreshHeader();
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.invalid_password), Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
+
+                        } else {
+
+                            Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.invalid_password), Toast.LENGTH_SHORT);
                             toast.show();
                         }
 
@@ -156,6 +293,11 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override public void onDestroyView() {
+        super.onDestroyView();
+        //unbinder.unbind();
     }
 
     public boolean isOnlyLetters(String name) {

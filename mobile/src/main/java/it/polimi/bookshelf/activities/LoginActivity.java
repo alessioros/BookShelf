@@ -69,8 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
         _loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                R.style.AppTheme_Dark_Dialog);
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
@@ -89,12 +88,9 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 user = dataSnapshot.getValue(User.class);
-                                Log.v("FIREBASE", "USER PASSWORD: " + user.getPassword());
-                                Log.v("FIREBASE", "USER EMAIL: " + user.getAccess_email());
                                 if (user.getPassword().equals(password)) {
 
-                                    new DataHandler(getBaseContext()).getPreferencesHandler().setUser_name(user.getUser_name());
-                                    new DataHandler(getBaseContext()).getPreferencesHandler().setUser_surname(user.getUser_surname());
+                                    new DataHandler(getBaseContext()).getPreferencesHandler().setUser(user);
                                     onLoginSuccess();
                                 }else{
                                     onLoginFailed();
@@ -159,8 +155,8 @@ public class LoginActivity extends AppCompatActivity {
             _emailText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+        if (password.isEmpty() || password.length() < 4 || password.length() > 15) {
+            _passwordText.setError("between 4 and 15 alphanumeric characters");
             valid = false;
         } else {
             _passwordText.setError(null);

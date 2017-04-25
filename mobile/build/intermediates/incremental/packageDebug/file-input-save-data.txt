@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Apr 24 22:11:01 CEST 2017
+#Mon Apr 24 22:36:04 CEST 2017
 210.set=ANDROID_RESOURCE
 282.file=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/resources-debug.ap_/res/layout/abc_screen_content_include.xml
 14.set=ANDROID_RESOURCE

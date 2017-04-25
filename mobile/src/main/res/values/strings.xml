@@ -8,13 +8,16 @@
     <string name="nav_logout">Logout</string>
 
     <!-- shared preferences keys and default values -->
+    <string name="user_access_email">user_access_email</string>
+    <string name="user_access_email_default"></string>
+    <string name="user_password">user_password</string>
+    <string name="user_password_default"></string>
     <string name="user_name">user_name</string>
     <string name="user_name_default"></string>
     <string name="user_surname">user_surname</string>
     <string name="user_surname_default"></string>
-    <string name="num_books">num_books</string>
-    <string name="num_books_default">0</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="user_book_count">user_book_count</string>
+    <string name="user_book_count_default"></string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -45,17 +48,23 @@
 
     <string name="username_title">Name</string>
     <string name="usersurname_title">Surname</string>
+    <string name="useremail_title">Email</string>
+    <string name="userpassword_title">Password</string>
 
     <string name="general_sett_title">General Settings</string>
 
     <string name="change_username">Change Name</string>
     <string name="change_usersurname">Change Surname</string>
+    <string name="change_email">Change Email</string>
+    <string name="change_password">Change Password</string>
 
     <string name="alert_ok">Ok</string>
     <string name="alert_cancel">Cancel</string>
 
     <string name="invalid_name">Error, name must contain only letters</string>
     <string name="invalid_surname">Error, surname must contain only letters</string>
+    <string name="invalid_email">Error, invalid email</string>
+    <string name="invalid_password">Error, invalid password</string>
 
     <!-- HOME FRAGMENT -->
     <string name="app_title">BookShelf</string>
