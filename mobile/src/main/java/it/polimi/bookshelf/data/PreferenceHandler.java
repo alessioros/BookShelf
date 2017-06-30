@@ -33,6 +33,16 @@ public class PreferenceHandler {
 		editor.apply();
 	}
 
+	public void deleteUser(){
+
+		editor = sp.edit();
+		editor.remove(context.getResources().getString(R.string.user_access_email));
+		editor.remove(context.getResources().getString(R.string.user_password));
+		editor.remove(context.getResources().getString(R.string.user_name));
+		editor.remove(context.getResources().getString(R.string.user_surname));
+		editor.apply();
+	}
+
 	public String getUser_access_email() {
 
 		String defaultValue = context.getResources().getString(R.string.user_access_email_default);

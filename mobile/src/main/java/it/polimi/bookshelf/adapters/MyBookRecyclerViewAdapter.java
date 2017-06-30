@@ -3,6 +3,8 @@ package it.polimi.bookshelf.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import it.polimi.bookshelf.R;
+import it.polimi.bookshelf.activities.BookDetailActivity;
 import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.model.Book;
 
@@ -50,7 +53,10 @@ public class MyBookRecyclerViewAdapter extends RecyclerView.Adapter<MyBookRecycl
             @Override
             public void onClick(View v) {
 
-
+                Intent intent = new Intent(context, BookDetailActivity.class);
+                intent.putExtra("book", holder.mItem);
+                intent.putExtra("button", "delete");
+                context.startActivity(intent);
             }
         });
 

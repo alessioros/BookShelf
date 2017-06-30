@@ -144,7 +144,7 @@ public class BookListFragment extends Fragment {
                         }
 
                         Intent bookIntent = new Intent(getActivity(), BookDetailActivity.class);
-                        bookIntent.putExtra("book", (Parcelable) book);
+                        bookIntent.putExtra("book", book);
                         bookIntent.putExtra("button", "add");
                         bookIntent.putExtra("shelf_name", shelfName);
                         getActivity().startActivity(bookIntent);
@@ -215,9 +215,11 @@ public class BookListFragment extends Fragment {
                         @Override
                         public void onResponse(JSONObject response) {
 
+                            Log.v("ISBNDB RESPONSE", response.toString());
                             isbndbBook = new ISBNDbFinder(getActivity()).getBook(response);
                             book = new MergeBookSources().mergeBooks(amazonBook, googleBook, isbndbBook);
                             SearchForBooks.this.onPostExecute();
+
                         }
 
                     }, new Response.ErrorListener() {

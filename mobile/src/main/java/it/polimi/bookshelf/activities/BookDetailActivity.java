@@ -4,10 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -261,9 +258,21 @@ public class BookDetailActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
+                DatabaseHandler dbH = new DataHandler(BookDetailActivity.this).getDatabaseHandler();
+
                 try {
 
+                    dbH.deleteBook(book.getISBN());
                     Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.success_delete), Toast.LENGTH_SHORT).show();
+                    // redirects to library after 0.5 seconds, allowing library to display the new book
+                    new Handler().postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            finish();
+                        }
+                    }, REDIRECT_TIME_OUT);
 
                 } catch (Exception e) {
 
@@ -290,9 +299,9 @@ public class BookDetailActivity extends AppCompatActivity {
         try {
             DatabaseHandler dbH = new DataHandler(BookDetailActivity.this).getDatabaseHandler();
 
-            if(dbH.queryBook(book.getISBN()).getISBN() != null){
+            if (dbH.queryBook(book.getISBN()).getISBN() != null) {
                 Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.book_alr_added), Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 dbH.insertBook(book);
 
                 Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.success_add), Toast.LENGTH_SHORT).show();

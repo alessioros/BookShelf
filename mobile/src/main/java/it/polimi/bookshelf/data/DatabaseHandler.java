@@ -119,7 +119,7 @@ public class DatabaseHandler {
 
     public Book queryBook(String ISBN) {
         Cursor crs;
-        Book Book = new Book();
+        Book book = new Book();
         SQLiteDatabase db = dbhelper.getWritableDatabase();
 
         String tableName = DatabaseStrings.TBL_BOOK;
@@ -128,6 +128,7 @@ public class DatabaseHandler {
 
         try {
             String SQL_QUERY = "SELECT * FROM " + tableName + " WHERE " + primaryKey + " = ?";
+            System.out.print(SQL_QUERY);
             crs = db.rawQuery(SQL_QUERY, whereArgs);
         } catch (SQLiteException sqle) {
             sqle.printStackTrace();
@@ -141,23 +142,24 @@ public class DatabaseHandler {
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
 
-            Book.setTitle(crs.getString(0));
-            Book.setDescription(crs.getString(1));
-            Book.setPageCount(crs.getString(2));
-            Book.setPublisher(crs.getString(3));
+            book.setTitle(crs.getString(0));
+            book.setDescription(crs.getString(1));
+            book.setPageCount(crs.getString(2));
+            book.setPublisher(crs.getString(3));
             try {
                 date = dateFormat.parse(crs.getString(4));
-                Book.setPublishedDate(date);
+                book.setPublishedDate(date);
             } catch (ParseException e) {
-                Book.setPublishedDate(null);
+                book.setPublishedDate(null);
                 e.printStackTrace();
             }
-            Book.setImgUrl(crs.getString(5));
+            book.setImgUrl(crs.getString(5));
+            System.out.print(book.getISBN());
             crs.moveToNext();
         }
         crs.close();
 
-        return Book;
+        return book;
     }
 
     public Author queryAuthor(String ID) {

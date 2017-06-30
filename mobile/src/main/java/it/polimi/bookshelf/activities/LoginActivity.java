@@ -22,6 +22,7 @@ import butterknife.BindView;
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.data.CloudHandler;
 import it.polimi.bookshelf.data.DataHandler;
+import it.polimi.bookshelf.data.PreferenceHandler;
 import it.polimi.bookshelf.objects.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -39,6 +40,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        PreferenceHandler pH = new DataHandler(LoginActivity.this).getPreferencesHandler();
+
+        User user = pH.getUser();
+        if(!user.getAccess_email().isEmpty() && !user.getPassword().isEmpty()){
+
+            login(user.getAccess_email(), user.getPassword());
+        }
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -76,6 +85,48 @@ public class LoginActivity extends AppCompatActivity {
 
         final String email = _emailText.getText().toString();
         final String password = _passwordText.getText().toString();
+
+        new android.os.Handler().post(
+                new Runnable() {
+                    public void run() {
+
+                        CloudHandler cdH = new DataHandler(LoginActivity.this).getCloudHandler();
+                        DatabaseReference ref = cdH.getUser(email);
+
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                user = dataSnapshot.getValue(User.class);
+                                if (user.getPassword().equals(password)) {
+
+                                    new DataHandler(getBaseContext()).getPreferencesHandler().setUser(user);
+                                    onLoginSuccess();
+                                }else{
+                                    onLoginFailed();
+                                }
+                                progressDialog.dismiss();
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                System.out.println("The read failed: " + databaseError.getCode());
+                            }
+                        });
+                    }
+                });
+    }
+
+    public void login(String acc_email, String acc_password) {
+
+        _loginButton.setEnabled(false);
+
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
+
+        final String email = acc_email;
+        final String password = acc_password;
 
         new android.os.Handler().post(
                 new Runnable() {

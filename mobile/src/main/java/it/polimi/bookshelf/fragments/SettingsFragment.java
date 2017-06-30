@@ -193,7 +193,7 @@ public class SettingsFragment extends Fragment {
 
                         String emailString = dialogEdit.getText().toString();
 
-                        if (!emailString.isEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
+                        if (!emailString.isEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
 
                             try{
                                 dataHandler.getPreferencesHandler().setUser_access_email(emailString);
@@ -247,13 +247,13 @@ public class SettingsFragment extends Fragment {
 
                         String passwordString = dialogEdit.getText().toString();
 
-                        if (!passwordString.isEmpty() && passwordString.length() < 4 || passwordString.length() > 15) {
+                        if (!passwordString.isEmpty() && passwordString.length() > 4 || passwordString.length() < 15) {
 
                             try{
                                 dataHandler.getPreferencesHandler().setUser_password(passwordString);
                                 user.setPassword(passwordString);
                                 dataHandler.getCloudHandler().updateUser(user);
-                                userEmail.setText(passwordString);
+                                userPassword.setText(passwordString);
                                 ((HomeActivity) getActivity()).refreshHeader();
 
                             }catch (Exception e){

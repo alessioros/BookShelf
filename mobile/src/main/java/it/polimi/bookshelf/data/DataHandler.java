@@ -8,12 +8,14 @@ public class DataHandler {
     private PreferenceHandler ph;
     private DatabaseHandler dbh;
     private CloudHandler cdh;
+    private StorageHandler sH;
 
     public DataHandler(Context context) {
         this.context = context;
         this.ph = new PreferenceHandler(this.context);
         this.dbh = new DatabaseHandler(this.context);
         this.cdh = new CloudHandler();
+        this.sH = new StorageHandler(this.context);
     }
 
     public PreferenceHandler getPreferencesHandler() {
@@ -26,5 +28,9 @@ public class DataHandler {
 
     public CloudHandler getCloudHandler() {
         return this.cdh;
+    }
+
+    public StorageHandler getStorageHandler(){
+        return this.sH;
     }
 }

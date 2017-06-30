@@ -149,6 +149,8 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
 
+            PreferenceHandler pH = new PreferenceHandler(HomeActivity.this);
+            pH.deleteUser();
             startActivity(new Intent(HomeActivity.this, LoginActivity.class));
         }
 

@@ -6,34 +6,34 @@
     density="420dpi"
     format="10"
     plugin-version="2.3.1"
-    timestamp="1493133395944"
+    timestamp="1498857129580"
     token="-2153562279769262331"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="3955" />
+        duration="7403" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="35" />
+        duration="8" />
     <task
         name="verifier"
-        duration="7" />
+        duration="130" />
 
     <artifact
         location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/split-apk/debug/slices/slice_7.apk"
         type="SPLIT" />
-    <artifact
-        location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/outputs/apk/mobile-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1493132985984"
+        timestamp="1498855567497"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/outputs/apk/mobile-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
@@ -67,13 +67,10 @@
         <artifact
             location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
-        <artifact
-            location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/outputs/apk/mobile-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1493133066931"
+        timestamp="1498856201032"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/split-apk/debug/slices/slice_8.apk"
@@ -81,14 +78,11 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1493133395944"
+        timestamp="1498857129580"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
-        <artifact
-            location="/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/outputs/apk/mobile-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>
