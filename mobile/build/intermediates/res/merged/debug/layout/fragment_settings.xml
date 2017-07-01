@@ -44,6 +44,7 @@
                 android:id="@+id/username_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="@dimen/settings_title_minwidth"
                 android:text="@string/username_title"
                 android:textColor="@color/textPrimaryLight"
                 android:textSize="@dimen/gen_title_txtsize" />
@@ -52,6 +53,7 @@
                 android:id="@+id/set_username_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxWidth="@dimen/settings_value_maxwidth"
                 android:layout_marginLeft="@dimen/subtitle_marginleft"
                 android:layout_marginStart="@dimen/subtitle_marginleft"
                 android:textColor="@color/textSecondary"
@@ -81,6 +83,7 @@
                 android:id="@+id/usersurname_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="@dimen/settings_title_minwidth"
                 android:text="@string/usersurname_title"
                 android:textColor="@color/textPrimaryLight"
                 android:textSize="@dimen/gen_title_txtsize" />
@@ -89,6 +92,7 @@
                 android:id="@+id/set_usersurname_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxWidth="@dimen/settings_value_maxwidth"
                 android:layout_marginLeft="@dimen/subtitle_marginleft"
                 android:layout_marginStart="@dimen/subtitle_marginleft"
                 android:textColor="@color/textSecondary"
@@ -118,6 +122,7 @@
                 android:id="@+id/useremail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="@dimen/settings_title_minwidth"
                 android:text="@string/useremail_title"
                 android:textColor="@color/textPrimaryLight"
                 android:textSize="@dimen/gen_title_txtsize" />
@@ -126,6 +131,7 @@
                 android:id="@+id/set_useremail_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxWidth="@dimen/settings_value_maxwidth"
                 android:layout_marginLeft="@dimen/subtitle_marginleft"
                 android:layout_marginStart="@dimen/subtitle_marginleft"
                 android:textColor="@color/textSecondary"
@@ -156,6 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/userpassword_title"
+                android:minWidth="@dimen/settings_title_minwidth"
                 android:textColor="@color/textPrimaryLight"
                 android:textSize="@dimen/gen_title_txtsize" />
 
@@ -163,9 +170,11 @@
                 android:id="@+id/set_userpassword_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxWidth="@dimen/settings_value_maxwidth"
                 android:layout_marginLeft="@dimen/subtitle_marginleft"
                 android:layout_marginStart="@dimen/subtitle_marginleft"
                 android:textColor="@color/textSecondary"
+                android:inputType="textPassword"
                 android:textSize="@dimen/gen_text_txtsize" />
 
         </LinearLayout>

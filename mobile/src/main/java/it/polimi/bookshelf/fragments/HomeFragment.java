@@ -43,11 +43,14 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /*
+     * instantiate HomeFragment
+     * @param onlyScan if the fragment is called for an ISBN scan
+     */
     public static HomeFragment newInstance(boolean onlySCan) {
         HomeFragment fragment = new HomeFragment();
 
         fragment.onlySCan = onlySCan;
-
         return fragment;
     }
 

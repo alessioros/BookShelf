@@ -42,25 +42,24 @@
         android:textSize="@dimen/app_subtitle_txtsize"/>
 
     <View
+        android:id="@+id/ruler"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_below="@+id/app_subtitle"
         android:background="#CCC"
-        android:layout_below="@id/app_subtitle"
         android:layout_marginTop="30dp" />
 
     <Button
         android:id="@+id/scan_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ruler"
         android:text="@string/scan_a_book"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textSize="22sp"
+        android:padding="10dp"
+        android:textSize="18sp"
         android:textColor="@color/colorPrimary"
         android:background="@drawable/button_border"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true" />
-
 </RelativeLayout>
 

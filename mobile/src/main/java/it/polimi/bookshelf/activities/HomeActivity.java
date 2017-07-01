@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("BookShelf");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity
 
             Fragment fragment = HomeFragment.newInstance(false);
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-            getSupportActionBar().setTitle("Home");
+            getSupportActionBar().setTitle("");
 
         }
 
@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity
 
             Fragment fragment = HomeFragment.newInstance(false);
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-            getSupportActionBar().setTitle("Home");
+            getSupportActionBar().setTitle("");
         }
     }
 
@@ -103,7 +103,6 @@ public class HomeActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
             Fragment fragment = SettingsFragment.newInstance();
@@ -120,14 +119,14 @@ public class HomeActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
 
             Fragment fragment = HomeFragment.newInstance(false);
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-            getSupportActionBar().setTitle("Home");
+            getSupportActionBar().setTitle("");
 
         } else if (id == R.id.nav_library) {
 
@@ -139,7 +138,7 @@ public class HomeActivity extends AppCompatActivity
 
             Fragment fragment = HomeFragment.newInstance(true);
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-            getSupportActionBar().setTitle("Home");
+            getSupportActionBar().setTitle("");
 
         } else if (id == R.id.nav_settings) {
 

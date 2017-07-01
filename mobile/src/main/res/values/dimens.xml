@@ -80,6 +80,8 @@
     <dimen name="settings_headers_padding">15dp</dimen>
     <dimen name="settings_padding">10dp</dimen>
     <dimen name="settings_paddingleft">25dp</dimen>
+    <dimen name="settings_title_minwidth">90dp</dimen>
+    <dimen name="settings_value_maxwidth">230dp</dimen>
 
     <dimen name="settings_txtsize">18sp</dimen>
     <dimen name="settings_iconsize">30dp</dimen>

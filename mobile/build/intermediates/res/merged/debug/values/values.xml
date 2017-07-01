@@ -721,8 +721,10 @@
     <dimen name="settings_locicon_width">22dp</dimen>
     <dimen name="settings_padding">10dp</dimen>
     <dimen name="settings_paddingleft">25dp</dimen>
+    <dimen name="settings_title_minwidth">90dp</dimen>
     <dimen name="settings_txt_marginleft">80dp</dimen>
     <dimen name="settings_txtsize">18sp</dimen>
+    <dimen name="settings_value_maxwidth">230dp</dimen>
     <dimen name="subtitle_marginleft">15dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="title_margintop">20dp</dimen>

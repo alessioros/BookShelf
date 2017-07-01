@@ -51,6 +51,16 @@ public class SettingsFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    public String shortVersion(String field){
+
+        if(field.length() > 21){
+
+            field = field.substring(0,19)+"..";
+        }
+
+        return field;
+    }
+
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,10 +72,10 @@ public class SettingsFragment extends Fragment {
         dataHandler = new DataHandler(getActivity());
         user = dataHandler.getPreferencesHandler().getUser();
 
-        userName.setText(user.getUser_name());
-        userSurname.setText(user.getUser_surname());
-        userEmail.setText(user.getAccess_email());
-        userPassword.setText(user.getPassword());
+        userName.setText(shortVersion(user.getUser_name()));
+        userSurname.setText(shortVersion(user.getUser_surname()));
+        userEmail.setText(shortVersion(user.getAccess_email()));
+        userPassword.setText(shortVersion(user.getPassword()));
 
         setUserName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +102,7 @@ public class SettingsFragment extends Fragment {
                                 dataHandler.getPreferencesHandler().setUser_surname(nameString);
                                 user.setUser_name(nameString);
                                 dataHandler.getCloudHandler().updateUser(user);
-                                userName.setText(nameString);
+                                userName.setText(shortVersion(nameString));
                                 ((HomeActivity) getActivity()).refreshHeader();
 
                             }catch (Exception e){
@@ -145,7 +155,7 @@ public class SettingsFragment extends Fragment {
                                 dataHandler.getPreferencesHandler().setUser_surname(surnameString);
                                 user.setUser_surname(surnameString);
                                 dataHandler.getCloudHandler().updateUser(user);
-                                userSurname.setText(surnameString);
+                                userSurname.setText(shortVersion(surnameString));
                                 ((HomeActivity) getActivity()).refreshHeader();
 
                             }catch (Exception e){
@@ -199,7 +209,7 @@ public class SettingsFragment extends Fragment {
                                 dataHandler.getPreferencesHandler().setUser_access_email(emailString);
                                 user.setAccess_email(emailString);
                                 dataHandler.getCloudHandler().updateUser(user);
-                                userEmail.setText(emailString);
+                                userEmail.setText(shortVersion(emailString));
                                 ((HomeActivity) getActivity()).refreshHeader();
 
                             }catch (Exception e){
@@ -253,7 +263,7 @@ public class SettingsFragment extends Fragment {
                                 dataHandler.getPreferencesHandler().setUser_password(passwordString);
                                 user.setPassword(passwordString);
                                 dataHandler.getCloudHandler().updateUser(user);
-                                userPassword.setText(passwordString);
+                                userPassword.setText(shortVersion(passwordString));
                                 ((HomeActivity) getActivity()).refreshHeader();
 
                             }catch (Exception e){

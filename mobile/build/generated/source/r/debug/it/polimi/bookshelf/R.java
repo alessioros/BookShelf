@@ -3327,13 +3327,15 @@ containing a value of this type.
         public static final int settings_locicon_width=0x7f0900cd;
         public static final int settings_padding=0x7f0900ce;
         public static final int settings_paddingleft=0x7f0900cf;
-        public static final int settings_txt_marginleft=0x7f0900d0;
-        public static final int settings_txtsize=0x7f0900d1;
-        public static final int subtitle_marginleft=0x7f0900d2;
-        public static final int text_margin=0x7f0900d3;
-        public static final int title_margintop=0x7f0900d4;
-        public static final int title_maxwidth=0x7f0900d5;
-        public static final int title_txtsize=0x7f0900d6;
+        public static final int settings_title_minwidth=0x7f0900d0;
+        public static final int settings_txt_marginleft=0x7f0900d1;
+        public static final int settings_txtsize=0x7f0900d2;
+        public static final int settings_value_maxwidth=0x7f0900d3;
+        public static final int subtitle_marginleft=0x7f0900d4;
+        public static final int text_margin=0x7f0900d5;
+        public static final int title_margintop=0x7f0900d6;
+        public static final int title_maxwidth=0x7f0900d7;
+        public static final int title_txtsize=0x7f0900d8;
     }
     public static final class drawable {
         public static final int abc_ab_share_pack_mtrl_alpha=0x7f020000;
