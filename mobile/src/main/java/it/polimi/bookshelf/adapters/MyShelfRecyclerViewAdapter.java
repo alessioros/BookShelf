@@ -55,7 +55,7 @@ public class MyShelfRecyclerViewAdapter extends RecyclerView.Adapter<MyShelfRecy
             public void onClick(View v) {
 
                 Intent intent = new Intent(activity, ShelfActivity.class);
-                intent.putExtra("shelf_name",holder.mItem.getName());
+                intent.putExtra("shelf_name", holder.mItem.getName());
                 activity.startActivity(intent);
             }
         });
@@ -71,23 +71,23 @@ public class MyShelfRecyclerViewAdapter extends RecyclerView.Adapter<MyShelfRecy
                 builder.setTitle("Confirm Delete");
 
                 final TextView dialogMessage = (TextView) promptsView.findViewById(R.id.alert_message);
-                dialogMessage.setText("Delete shelf: "+holder.mItem.getName()+"?");
+                dialogMessage.setText("Delete shelf: " + holder.mItem.getName() + "?");
 
                 builder.setPositiveButton(holder.mView.getContext().getResources().getString(R.string.alert_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        try{
+                        try {
                             List<Book> shelfBooks = dH.getDatabaseHandler().getBookList(holder.mItem.getName());
                             dH.getDatabaseHandler().deleteShelf(holder.mItem.getName());
                             mShelves.remove(holder.getAdapterPosition());
                             notifyItemRemoved(holder.getAdapterPosition());
 
-                            for(Book book : shelfBooks){
+                            for (Book book : shelfBooks) {
                                 dH.getDatabaseHandler().deleteBook(book.getISBN());
                             }
 
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }

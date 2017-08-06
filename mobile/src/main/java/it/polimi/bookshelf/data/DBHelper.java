@@ -7,54 +7,54 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-	// If you change the database schema, you must increment the database version.
-	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "SQLITE_DB";
+    // If you change the database schema, you must increment the database version.
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "SQLITE_DB";
 
-	public DBHelper(Context context) {
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-	}
+    public DBHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
 
-	@Override
-	public void onCreate(SQLiteDatabase db) {
+    @Override
+    public void onCreate(SQLiteDatabase db) {
 
-		String CREATE_BOOK = "CREATE TABLE " + DatabaseStrings.TBL_BOOK + " (" + DatabaseStrings.BOOK_ID
-				+ " TEXT PRIMARY KEY," +
+        String CREATE_BOOK = "CREATE TABLE " + DatabaseStrings.TBL_BOOK + " (" + DatabaseStrings.BOOK_ID
+                + " TEXT PRIMARY KEY," +
 
-				DatabaseStrings.BOOK_TITLE + " TEXT," + DatabaseStrings.BOOK_DESCRIPTION + " TEXT,"
-				+ DatabaseStrings.BOOK_PAGECOUNT + " TEXT," + DatabaseStrings.BOOK_PUBLISHER + " TEXT,"
-				+ DatabaseStrings.BOOK_PUBLISHEDDATE + " TEXT," + DatabaseStrings.BOOK_IMGURL + " TEXT,"
-				+ DatabaseStrings.AUTHOR_ID + " TEXT," + DatabaseStrings.SHELF_ID + " TEXT," + " FOREIGN KEY ("
-				+ DatabaseStrings.AUTHOR_ID + ") REFERENCES " + DatabaseStrings.TBL_AUTHOR + "("
-				+ DatabaseStrings.AUTHOR_ID + ")," + " FOREIGN KEY (" + DatabaseStrings.SHELF_ID + ") REFERENCES "
-				+ DatabaseStrings.TBL_SHELF + "(" + DatabaseStrings.SHELF_ID + "));";
+                DatabaseStrings.BOOK_TITLE + " TEXT," + DatabaseStrings.BOOK_DESCRIPTION + " TEXT,"
+                + DatabaseStrings.BOOK_PAGECOUNT + " TEXT," + DatabaseStrings.BOOK_PUBLISHER + " TEXT,"
+                + DatabaseStrings.BOOK_PUBLISHEDDATE + " TEXT," + DatabaseStrings.BOOK_IMGURL + " TEXT,"
+                + DatabaseStrings.AUTHOR_ID + " TEXT," + DatabaseStrings.SHELF_ID + " TEXT," + " FOREIGN KEY ("
+                + DatabaseStrings.AUTHOR_ID + ") REFERENCES " + DatabaseStrings.TBL_AUTHOR + "("
+                + DatabaseStrings.AUTHOR_ID + ")," + " FOREIGN KEY (" + DatabaseStrings.SHELF_ID + ") REFERENCES "
+                + DatabaseStrings.TBL_SHELF + "(" + DatabaseStrings.SHELF_ID + "));";
 
-		db.execSQL(CREATE_BOOK);
+        db.execSQL(CREATE_BOOK);
 
-		String CREATE_AUTHOR = "CREATE TABLE " + DatabaseStrings.TBL_AUTHOR + " (" + DatabaseStrings.AUTHOR_ID
-				+ " TEXT PRIMARY KEY," +
+        String CREATE_AUTHOR = "CREATE TABLE " + DatabaseStrings.TBL_AUTHOR + " (" + DatabaseStrings.AUTHOR_ID
+                + " TEXT PRIMARY KEY," +
 
-				DatabaseStrings.AUTHOR_NAME + " TEXT," + DatabaseStrings.AUTHOR_SURNAME + " TEXT,"
-				+ DatabaseStrings.AUTHOR_BIOGRAPHY + " TEXT)";
+                DatabaseStrings.AUTHOR_NAME + " TEXT," + DatabaseStrings.AUTHOR_SURNAME + " TEXT,"
+                + DatabaseStrings.AUTHOR_BIOGRAPHY + " TEXT)";
 
-		db.execSQL(CREATE_AUTHOR);
+        db.execSQL(CREATE_AUTHOR);
 
-		String CREATE_SHELF = "CREATE TABLE " + DatabaseStrings.TBL_SHELF + " (" + DatabaseStrings.SHELF_ID
-				+ " TEXT PRIMARY KEY," +
+        String CREATE_SHELF = "CREATE TABLE " + DatabaseStrings.TBL_SHELF + " (" + DatabaseStrings.SHELF_ID
+                + " TEXT PRIMARY KEY," +
 
-				DatabaseStrings.SHELF_BOOKCOUNT + " INT)";
+                DatabaseStrings.SHELF_BOOKCOUNT + " INT)";
 
-		db.execSQL(CREATE_SHELF);
+        db.execSQL(CREATE_SHELF);
 
-	}
+    }
 
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Log.w(DBHelper.class.getName(), "Upgrading database from version " + oldVersion + " to " + newVersion
-				+ ", which will destroy all old data");
-		db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_BOOK);
-		db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_AUTHOR);
-		db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_SHELF);
-		onCreate(db);
-	}
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.w(DBHelper.class.getName(), "Upgrading database from version " + oldVersion + " to " + newVersion
+                + ", which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_BOOK);
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_AUTHOR);
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_SHELF);
+        onCreate(db);
+    }
 }

@@ -127,17 +127,17 @@ public class GoogleBooksFinder {
             return null;
         }
 
-        try{
-            Log.v("GOOGLE BOOK: ", "ISBN"+book.getISBN());
-            Log.v("GOOGLE BOOK: ", "AUTHOR ID"+book.getAuthorID());
-            Log.v("GOOGLE BOOK:", "TITLE"+book.getTitle());
-            Log.v("GOOGLE BOOK:", "DESCRIPTION"+book.getDescription());
-            Log.v("GOOGLE BOOK:", "PUBDATE"+book.getPublishedDate().toString());
-            Log.v("GOOGLE BOOK:", "PUBLISHER"+book.getPublisher());
-            Log.v("GOOGLE BOOK:", "PAGE COUNT"+book.getPageCount());
-            Log.v("GOOGLE BOOK:", "IMG URL"+book.getImgUrl());
-        }catch (Exception e){
-            Log.v("EXCEPTION",e.toString());
+        try {
+            Log.v("GOOGLE BOOK: ", "ISBN" + book.getISBN());
+            Log.v("GOOGLE BOOK: ", "AUTHOR ID" + book.getAuthorID());
+            Log.v("GOOGLE BOOK:", "TITLE" + book.getTitle());
+            Log.v("GOOGLE BOOK:", "DESCRIPTION" + book.getDescription());
+            Log.v("GOOGLE BOOK:", "PUBDATE" + book.getPublishedDate().toString());
+            Log.v("GOOGLE BOOK:", "PUBLISHER" + book.getPublisher());
+            Log.v("GOOGLE BOOK:", "PAGE COUNT" + book.getPageCount());
+            Log.v("GOOGLE BOOK:", "IMG URL" + book.getImgUrl());
+        } catch (Exception e) {
+            Log.v("EXCEPTION", e.toString());
         }
         return book;
     }

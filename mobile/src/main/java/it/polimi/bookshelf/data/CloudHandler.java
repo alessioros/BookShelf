@@ -38,11 +38,11 @@ public class CloudHandler {
     public boolean addUser(String access_email, String password, String user_name, String user_surname) {
 
         User user = new User(access_email, password, user_name, user_surname);
-        try{
-            String returnValue = getReference("users").child(access_email.replace(".","*")).setValue(user).toString();
+        try {
+            String returnValue = getReference("users").child(access_email.replace(".", "*")).setValue(user).toString();
             Log.v("ADDING USER", returnValue);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -55,11 +55,11 @@ public class CloudHandler {
     */
     public boolean updateUser(User user) {
 
-        try{
-            getReference("users").child(user.getAccess_email().replace(".","*")).setValue(user);
+        try {
+            getReference("users").child(user.getAccess_email().replace(".", "*")).setValue(user);
             Log.v("UPDATING USER", user.toString());
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -68,9 +68,9 @@ public class CloudHandler {
 
     public DatabaseReference getUser(String access_email) {
 
-        Log.v("FIREBASE","GETTING USER... "+access_email);
+        Log.v("FIREBASE", "GETTING USER... " + access_email);
 
-        return getReference("users/"+access_email.replace('.','*'));
+        return getReference("users/" + access_email.replace('.', '*'));
     }
 
     /*

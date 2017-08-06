@@ -30,11 +30,11 @@ public class ISBNDbFinder {
     private String KEY_PUBLISHED_DATE = "edition_info";
     private DataHandler dH;
 
-    public ISBNDbFinder(Context context){
+    public ISBNDbFinder(Context context) {
         this.dH = new DataHandler(context);
     }
 
-    public Book getBook(JSONObject response){
+    public Book getBook(JSONObject response) {
 
         Book mBook = new Book();
 
@@ -67,7 +67,7 @@ public class ISBNDbFinder {
             try {
                 String physicalDesc = data.getString(KEY_PAGECOUNT);
                 String pageCount = physicalDesc.split(";")[physicalDesc.split(";").length - 1];
-                pageCount = pageCount.replace(" ","").replace("pages","");
+                pageCount = pageCount.replace(" ", "").replace("pages", "");
                 mBook.setPageCount(pageCount);
 
             } catch (JSONException e) {
@@ -80,20 +80,20 @@ public class ISBNDbFinder {
                 JSONObject author = authors.getJSONObject(0);
 
                 Author bookAuthor = new Author();
-                bookAuthor.setName(author.getString("name").split(",")[1].replace(" ",""));
-                bookAuthor.setSurname(author.getString("name").split(",")[0].replace(" ",""));
+                bookAuthor.setName(author.getString("name").split(",")[1].replace(" ", ""));
+                bookAuthor.setSurname(author.getString("name").split(",")[0].replace(" ", ""));
                 bookAuthor.setID(author.getString("id"));
                 Log.v("AUTHOR NAME ", bookAuthor.getName());
                 Log.v("AUTHOR SURNAME ", bookAuthor.getSurname());
                 Log.v("AUTHOR ID ", bookAuthor.getID());
 
-                try{
+                try {
                     DatabaseHandler dbH = dH.getDatabaseHandler();
                     dbH.insertAuthor(bookAuthor);
-                }catch (SQLiteConstraintException e){
-                    Log.v("ISBNDB FINDER", "AUTHOR ALREADY INSERTED "+e.toString());
-                }catch (Exception e){
-                    Log.v("ISBNDB FINDER", "AUTHOR ALREADY INSERTED "+e.toString());
+                } catch (SQLiteConstraintException e) {
+                    Log.v("ISBNDB FINDER", "AUTHOR ALREADY INSERTED " + e.toString());
+                } catch (Exception e) {
+                    Log.v("ISBNDB FINDER", "AUTHOR ALREADY INSERTED " + e.toString());
                 }
 
                 mBook.setAuthorID(bookAuthor.getID());
@@ -128,17 +128,17 @@ public class ISBNDbFinder {
             return null;
         }
 
-        try{
-            Log.v("ISBN BOOK: ", "ISBN "+mBook.getISBN());
-            Log.v("ISBN BOOK: ", "AUTHOR ID "+mBook.getAuthorID());
-            Log.v("ISBN BOOK:", "TITLE "+mBook.getTitle());
-            Log.v("ISBN BOOK:", "DESCRIPTION "+mBook.getDescription());
-            Log.v("ISBN BOOK:", "PUBDATE "+mBook.getPublishedDate().toString());
-            Log.v("ISBN BOOK:", "PUBLISHER "+mBook.getPublisher());
-            Log.v("ISBN BOOK:", "PAGE COUNT "+mBook.getPageCount());
-            Log.v("ISBN BOOK:", "IMG URL "+mBook.getImgUrl());
-        }catch (Exception e){
-            Log.v("EXCEPTION",e.toString());
+        try {
+            Log.v("ISBN BOOK: ", "ISBN " + mBook.getISBN());
+            Log.v("ISBN BOOK: ", "AUTHOR ID " + mBook.getAuthorID());
+            Log.v("ISBN BOOK:", "TITLE " + mBook.getTitle());
+            Log.v("ISBN BOOK:", "DESCRIPTION " + mBook.getDescription());
+            Log.v("ISBN BOOK:", "PUBDATE " + mBook.getPublishedDate().toString());
+            Log.v("ISBN BOOK:", "PUBLISHER " + mBook.getPublisher());
+            Log.v("ISBN BOOK:", "PAGE COUNT " + mBook.getPageCount());
+            Log.v("ISBN BOOK:", "IMG URL " + mBook.getImgUrl());
+        } catch (Exception e) {
+            Log.v("EXCEPTION", e.toString());
         }
 
         return mBook;

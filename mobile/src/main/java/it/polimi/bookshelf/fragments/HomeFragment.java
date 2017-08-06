@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment {
     Book book, amazonBook, googleBook, isbndbBook;
     private String GOOGLE_API = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
     private boolean onlySCan = false;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -71,10 +72,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
 
                 DataHandler dH = new DataHandler(getActivity());
-                dH.getStorageHandler().writeFile("testfile","prova prova prova",false);
-                dH.getStorageHandler().writeFile("testfiletemp","ciao ciao ciao",true);
-                Log.v("FILE CONTENT", dH.getStorageHandler().readfile("testfile",false));
-                Log.v("FILE CONTENT", dH.getStorageHandler().readfile("testfiletmp",true));
+                dH.getStorageHandler().writeFile("testfile", "prova prova prova", false);
+                dH.getStorageHandler().writeFile("testfiletemp", "ciao ciao ciao", true);
+                Log.v("FILE CONTENT", dH.getStorageHandler().readfile("testfile", false));
+                Log.v("FILE CONTENT", dH.getStorageHandler().readfile("testfiletmp", true));
                 scanBook();
             }
         });
@@ -86,7 +87,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
 
-        if(onlySCan) scanBook();
+        if (onlySCan) scanBook();
         super.onAttach(context);
     }
 
@@ -95,7 +96,7 @@ public class HomeFragment extends Fragment {
         super.onDetach();
     }
 
-    public void scanBook(){
+    public void scanBook() {
         FragmentIntentIntegrator scanIntegrator = new FragmentIntentIntegrator(HomeFragment.this);
         scanIntegrator.setCaptureActivity(VerticalOrientationCA.class);
         scanIntegrator.setPrompt(getResources().getString(R.string.scan_book_prompt));
@@ -131,17 +132,17 @@ public class HomeFragment extends Fragment {
                     progressDialog.dismiss();
                     if (book.getISBN() != null) {
 
-                        try{
-                            Log.v("FINAL BOOK: AUTHOR ID ", ""+book.getAuthorID());
-                            Log.v("FINAL BOOK: TITLE ", ""+book.getTitle());
-                            Log.v("FINAL BOOK: DESC ", ""+book.getDescription());
-                            Log.v("FINAL BOOK: ISBN ", ""+book.getISBN());
-                            Log.v("FINAL BOOK: PUBDATE ", ""+book.getPublishedDate().toString());
-                            Log.v("FINAL BOOK: PUBLISHER ", ""+book.getPublisher());
-                            Log.v("FINAL BOOK: PAGE COUNT ", ""+book.getPageCount());
-                            Log.v("FINAL BOOK: IMG URL ", ""+book.getImgUrl());
-                        }catch (Exception e){
-                            Log.v("EXCEPTION ",e.toString());
+                        try {
+                            Log.v("FINAL BOOK: AUTHOR ID ", "" + book.getAuthorID());
+                            Log.v("FINAL BOOK: TITLE ", "" + book.getTitle());
+                            Log.v("FINAL BOOK: DESC ", "" + book.getDescription());
+                            Log.v("FINAL BOOK: ISBN ", "" + book.getISBN());
+                            Log.v("FINAL BOOK: PUBDATE ", "" + book.getPublishedDate().toString());
+                            Log.v("FINAL BOOK: PUBLISHER ", "" + book.getPublisher());
+                            Log.v("FINAL BOOK: PAGE COUNT ", "" + book.getPageCount());
+                            Log.v("FINAL BOOK: IMG URL ", "" + book.getImgUrl());
+                        } catch (Exception e) {
+                            Log.v("EXCEPTION ", e.toString());
                         }
 
                         Intent bookIntent = new Intent(getActivity(), BookDetailActivity.class);
@@ -185,7 +186,7 @@ public class HomeFragment extends Fragment {
 
             String url = GOOGLE_API + isbn[0];
             String ISBNDbKEY = "WHSHHYLX";
-            final String requestUrl = "http://isbndb.com/api/v2/json/"+ISBNDbKEY+"/book/"+isbn[0];
+            final String requestUrl = "http://isbndb.com/api/v2/json/" + ISBNDbKEY + "/book/" + isbn[0];
 
             // Make AsyncRequest to Google Books
             JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

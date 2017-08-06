@@ -30,7 +30,7 @@ public class DataHandler {
         return this.cdh;
     }
 
-    public StorageHandler getStorageHandler(){
+    public StorageHandler getStorageHandler() {
         return this.sH;
     }
 }

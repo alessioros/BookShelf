@@ -73,12 +73,12 @@ public class AmazonFinder {
 
                             Author bookAuthor = new Author();
 
-                            try{
+                            try {
                                 bookAuthor.setName(text.split(" ")[0]);
                                 bookAuthor.setSurname(text.split(" ")[1]);
                                 amazonBook.setAuthorID(text);
-                            }catch (NumberFormatException e){
-                                Log.v("AMAZON EXCEPTION: ", "AUTHOR - "+e.toString());
+                            } catch (NumberFormatException e) {
+                                Log.v("AMAZON EXCEPTION: ", "AUTHOR - " + e.toString());
                             }
 
                         } else if (name.equals(KEY_PUBLISHER)) {
@@ -88,9 +88,9 @@ public class AmazonFinder {
                         } else if (name.equals(KEY_PUBL_DATE)) {
 
                             Date date;
-                            try{
+                            try {
                                 date = DateFormat.getDateInstance().parse(text);
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 date = new Date();
                             }
                             amazonBook.setPublishedDate(date);
@@ -143,22 +143,22 @@ public class AmazonFinder {
 
         } catch (IOException e) {
             return null;
-        } catch(Exception e){
-            Log.v("AMAZON EXCEPTION ", ""+e.toString());
+        } catch (Exception e) {
+            Log.v("AMAZON EXCEPTION ", "" + e.toString());
             return null;
         }
 
-        try{
-            Log.v("AMAZON BOOK: ", "ISBN "+amazonBook.getISBN());
-            Log.v("AMAZON BOOK: ", "AUTHOR ID "+amazonBook.getAuthorID());
-            Log.v("AMAZON BOOK: ", "TITLE "+amazonBook.getTitle());
-            Log.v("AMAZON BOOK: ", "DESCRIPTION "+amazonBook.getDescription());
-            Log.v("AMAZON BOOK: ", "PUBDATE "+amazonBook.getPublishedDate().toString());
-            Log.v("AMAZON BOOK: ", "PUBLISHER "+amazonBook.getPublisher());
-            Log.v("AMAZON BOOK: ", "PAGE COUNT "+amazonBook.getPageCount());
-            Log.v("AMAZON BOOK: ", "IMG URL "+amazonBook.getImgUrl());
-        }catch (Exception e){
-            Log.v("EXCEPTION",e.toString());
+        try {
+            Log.v("AMAZON BOOK: ", "ISBN " + amazonBook.getISBN());
+            Log.v("AMAZON BOOK: ", "AUTHOR ID " + amazonBook.getAuthorID());
+            Log.v("AMAZON BOOK: ", "TITLE " + amazonBook.getTitle());
+            Log.v("AMAZON BOOK: ", "DESCRIPTION " + amazonBook.getDescription());
+            Log.v("AMAZON BOOK: ", "PUBDATE " + amazonBook.getPublishedDate().toString());
+            Log.v("AMAZON BOOK: ", "PUBLISHER " + amazonBook.getPublisher());
+            Log.v("AMAZON BOOK: ", "PAGE COUNT " + amazonBook.getPageCount());
+            Log.v("AMAZON BOOK: ", "IMG URL " + amazonBook.getImgUrl());
+        } catch (Exception e) {
+            Log.v("EXCEPTION", e.toString());
         }
         return amazonBook;
 

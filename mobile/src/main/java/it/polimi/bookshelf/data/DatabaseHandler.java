@@ -39,9 +39,9 @@ public class DatabaseHandler {
         cv.put(DatabaseStrings.BOOK_DESCRIPTION, book.getDescription());
         cv.put(DatabaseStrings.BOOK_PAGECOUNT, book.getPageCount());
         cv.put(DatabaseStrings.BOOK_PUBLISHER, book.getPublisher());
-        try{
+        try {
             cv.put(DatabaseStrings.BOOK_PUBLISHEDDATE, dateFormat.format(book.getPublishedDate()));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -300,7 +300,7 @@ public class DatabaseHandler {
             Book.setPageCount(crs.getString(3));
             Book.setPublisher(crs.getString(4));
             try {
-                Log.v("DATE"," "+crs.getString(5));
+                Log.v("DATE", " " + crs.getString(5));
                 date = dateFormat.parse(crs.getString(5));
                 Book.setPublishedDate(date);
             } catch (Exception e) {

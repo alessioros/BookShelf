@@ -37,6 +37,7 @@ public class Author {
     public String getName() {
         return this.Name;
     }
+
     public void setSurname(String Surname) {
         this.Surname = Surname;
     }
@@ -44,6 +45,7 @@ public class Author {
     public String getSurname() {
         return this.Surname;
     }
+
     public void setBiography(String Biography) {
         this.Biography = Biography;
     }

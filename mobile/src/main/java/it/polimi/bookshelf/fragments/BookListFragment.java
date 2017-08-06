@@ -130,17 +130,17 @@ public class BookListFragment extends Fragment {
                     progressDialog.dismiss();
                     if (book.getISBN() != null) {
 
-                        try{
-                            Log.v("FINAL BOOK: AUTHOR ID ", ""+book.getAuthorID());
-                            Log.v("FINAL BOOK: TITLE ", ""+book.getTitle());
-                            Log.v("FINAL BOOK: DESC ", ""+book.getDescription());
-                            Log.v("FINAL BOOK: ISBN ", ""+book.getISBN());
-                            Log.v("FINAL BOOK: PUBDATE ", ""+book.getPublishedDate().toString());
-                            Log.v("FINAL BOOK: PUBLISHER ", ""+book.getPublisher());
-                            Log.v("FINAL BOOK: PAGE COUNT ", ""+book.getPageCount());
-                            Log.v("FINAL BOOK: IMG URL ", ""+book.getImgUrl());
-                        }catch (Exception e){
-                            Log.v("EXCEPTION ",e.toString());
+                        try {
+                            Log.v("FINAL BOOK: AUTHOR ID ", "" + book.getAuthorID());
+                            Log.v("FINAL BOOK: TITLE ", "" + book.getTitle());
+                            Log.v("FINAL BOOK: DESC ", "" + book.getDescription());
+                            Log.v("FINAL BOOK: ISBN ", "" + book.getISBN());
+                            Log.v("FINAL BOOK: PUBDATE ", "" + book.getPublishedDate().toString());
+                            Log.v("FINAL BOOK: PUBLISHER ", "" + book.getPublisher());
+                            Log.v("FINAL BOOK: PAGE COUNT ", "" + book.getPageCount());
+                            Log.v("FINAL BOOK: IMG URL ", "" + book.getImgUrl());
+                        } catch (Exception e) {
+                            Log.v("EXCEPTION ", e.toString());
                         }
 
                         Intent bookIntent = new Intent(getActivity(), BookDetailActivity.class);
@@ -200,7 +200,7 @@ public class BookListFragment extends Fragment {
 
             String url = GOOGLE_API + isbn[0];
             String ISBNDbKEY = "WHSHHYLX";
-            final String requestUrl = "http://isbndb.com/api/v2/json/"+ISBNDbKEY+"/book/"+isbn[0];
+            final String requestUrl = "http://isbndb.com/api/v2/json/" + ISBNDbKEY + "/book/" + isbn[0];
 
             // Make AsyncRequest to Google Books
             JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

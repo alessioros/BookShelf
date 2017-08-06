@@ -115,49 +115,11 @@
                     android:layout_below="@+id/book_pagecount"
                     android:background="@color/book_ruler_color" />
 
-                <RelativeLayout
-                    android:id="@+id/layout_author"
-                    android:layout_below="@+id/first_ruler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/author_margin">
-
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/author_image"
-                        android:layout_width="@dimen/author_image"
-                        android:layout_height="@dimen/author_image"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/author_image_marginleft"
-                        android:layout_marginStart="@dimen/author_image_marginleft"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-                    <TextView
-                        android:id="@+id/name_author"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/author_name_txtsize"
-                        android:layout_marginTop="@dimen/author_name_margintop"
-                        android:layout_marginLeft="@dimen/author_textinfo_marginleft"
-                        android:layout_marginStart="@dimen/author_textinfo_marginleft"
-                        android:layout_toRightOf="@id/author_image"
-                        android:layout_toEndOf="@id/author_image" />
-
-                </RelativeLayout>
-
-                <View
-                    android:id="@+id/ruler"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/second_ruler_margintop"
-                    android:layout_below="@+id/layout_author"
-                    android:background="@color/book_ruler_color" />
-
                 <TextView
                     android:id="@+id/book_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/ruler"
+                    android:layout_below="@id/first_ruler"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/description_margintop"
                     android:maxHeight="@dimen/description_maxheight"

@@ -46,7 +46,7 @@ public class MyBookRecyclerViewAdapter extends RecyclerView.Adapter<MyBookRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mBooks.get(position);
 
-        if(holder.mItem.getImgUrl() != null)
+        if (holder.mItem.getImgUrl() != null)
             Picasso.with(context).load(holder.mItem.getImgUrl()).into(holder.mBookCover);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +70,7 @@ public class MyBookRecyclerViewAdapter extends RecyclerView.Adapter<MyBookRecycl
                 builder.setTitle("Confirm Delete");
 
                 final TextView dialogMessage = (TextView) promptsView.findViewById(R.id.alert_message);
-                dialogMessage.setText("Delete book: "+holder.mItem.getTitle()+"?");
+                dialogMessage.setText("Delete book: " + holder.mItem.getTitle() + "?");
 
                 builder.setPositiveButton(holder.mView.getContext().getResources().getString(R.string.alert_ok), new DialogInterface.OnClickListener() {
                     @Override

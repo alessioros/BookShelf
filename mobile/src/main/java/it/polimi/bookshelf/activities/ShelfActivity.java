@@ -42,7 +42,7 @@ public class ShelfActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         Intent i = new Intent(ShelfActivity.this, HomeActivity.class);
-        i.putExtra("FRAGMENT_TO_LOAD","SHELF");
+        i.putExtra("FRAGMENT_TO_LOAD", "SHELF");
         startActivity(i);
         super.onBackPressed();
     }
@@ -52,7 +52,7 @@ public class ShelfActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
 
             Intent i = new Intent(ShelfActivity.this, HomeActivity.class);
-            i.putExtra("FRAGMENT_TO_LOAD","SHELF");
+            i.putExtra("FRAGMENT_TO_LOAD", "SHELF");
             startActivity(i);
             return true;
         }

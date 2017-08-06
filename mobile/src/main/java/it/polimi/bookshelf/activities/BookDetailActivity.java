@@ -18,35 +18,30 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.data.DatabaseHandler;
-import it.polimi.bookshelf.model.Author;
 import it.polimi.bookshelf.model.Book;
+import it.polimi.bookshelf.model.Shelf;
 
 public class BookDetailActivity extends AppCompatActivity {
 
     private Book book;
-    private Author author;
     private static int REDIRECT_TIME_OUT = 500;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private static final String TAG = "BookDetail";
-    private View ruler, secondRuler;
-    private boolean loadUserFinished = false, loadRevFinished = false;
-    private boolean fromUserProfile = false;
-    private RelativeLayout authorInfoLayout;
-
-    private Intent intent;
+    private DatabaseHandler dbH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +66,9 @@ public class BookDetailActivity extends AppCompatActivity {
         TextView bookPageCount = (TextView) findViewById(R.id.book_pagecount);
         TextView bookDescription = (TextView) findViewById(R.id.book_description);
         TextView bookPublisher = (TextView) findViewById(R.id.book_publisher);
-        final TextView name_author = (TextView) findViewById(R.id.name_author);
-        final CircularImageView image_author = (CircularImageView) findViewById(R.id.author_image);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        authorInfoLayout = (RelativeLayout) findViewById(R.id.layout_author);
-        ruler = findViewById(R.id.first_ruler);
-        secondRuler = findViewById(R.id.ruler);
+        View ruler = findViewById(R.id.first_ruler);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -140,7 +130,6 @@ public class BookDetailActivity extends AppCompatActivity {
         } else {
 
             ruler.setVisibility(View.GONE);
-            authorInfoLayout.setVisibility(View.GONE);
         }
 
         Picasso.with(this).load(book.getImgUrl()).into(bookImage, new Callback() {
@@ -210,7 +199,6 @@ public class BookDetailActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -297,22 +285,68 @@ public class BookDetailActivity extends AppCompatActivity {
     private void addBook() {
 
         try {
-            DatabaseHandler dbH = new DataHandler(BookDetailActivity.this).getDatabaseHandler();
+            dbH = new DataHandler(BookDetailActivity.this).getDatabaseHandler();
 
-            if (dbH.queryBook(book.getISBN()).getISBN() != null) {
-                Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.book_alr_added), Toast.LENGTH_SHORT).show();
-            } else {
-                dbH.insertBook(book);
+            List<Book> books = dbH.getBookList();
 
-                Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.success_add), Toast.LENGTH_SHORT).show();
+            for(Book book2 : books){
+                if (book2.getISBN().equals(book.getISBN())){
+                    Toast.makeText(BookDetailActivity.this, "you already added this book", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
 
+            if (book.getShelfID().equals("none")) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(BookDetailActivity.this);
+                builder.setTitle("Select the shelf:");
+
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(BookDetailActivity.this, android.R.layout.select_dialog_singlechoice);
+
+                List<Shelf> shelves = dbH.getShelfList();
+
+                for (Shelf shelf : shelves) {
+                    arrayAdapter.add(shelf.getName());
+                }
+
+                builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        book.setShelfID(arrayAdapter.getItem(which));
+                        dbH.insertBook(book);
+                        redirectToLibrary();
+                    }
+                });
+                builder.show();
+
+            } else {
+
+                if (dbH.queryBook(book.getISBN()).getISBN() != null) {
+                    Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.book_alr_added), Toast.LENGTH_SHORT).show();
+                } else {
+                    dbH.insertBook(book);
+
+                    Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.success_add), Toast.LENGTH_SHORT).show();
+                }
+                redirectToLibrary();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(BookDetailActivity.this, getResources().getString(R.string.error_add), Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    private void redirectToLibrary() {
 
         // redirects to library after 0.5 seconds, allowing library to display the new book
         new Handler().postDelayed(new Runnable() {
@@ -321,16 +355,10 @@ public class BookDetailActivity extends AppCompatActivity {
             public void run() {
 
                 finish();
+                Intent i = new Intent(BookDetailActivity.this, HomeActivity.class);
+                i.putExtra("FRAGMENT_TO_LOAD", "SHELF");
+                startActivity(i);
             }
         }, REDIRECT_TIME_OUT);
-
     }
-
-    public interface OnUserLoadingCompleted {
-        void onUserLoadingCompleted();
-    }
-
 }
-
-
-

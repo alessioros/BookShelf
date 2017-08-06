@@ -213,17 +213,17 @@ public class MergeBookSources {
             return null;
         }
 
-        try{
-            Log.v("MERGED BOOK: ", "ISBN "+book.getISBN());
-            Log.v("MERGED BOOK: ", "AUTHOR ID "+book.getAuthorID());
-            Log.v("MERGED BOOK:", "TITLE "+book.getTitle());
-            Log.v("MERGED BOOK:", "DESCRIPTION "+book.getDescription());
-            Log.v("MERGED BOOK:", "PUBDATE "+book.getPublishedDate().toString());
-            Log.v("MERGED BOOK:", "PUBLISHER "+book.getPublisher());
-            Log.v("MERGED BOOK:", "PAGE COUNT "+book.getPageCount());
-            Log.v("MERGED BOOK:", "IMG URL "+book.getImgUrl());
-        }catch (Exception e){
-            Log.v("EXCEPTION",e.toString());
+        try {
+            Log.v("MERGED BOOK: ", "ISBN " + book.getISBN());
+            Log.v("MERGED BOOK: ", "AUTHOR ID " + book.getAuthorID());
+            Log.v("MERGED BOOK:", "TITLE " + book.getTitle());
+            Log.v("MERGED BOOK:", "DESCRIPTION " + book.getDescription());
+            Log.v("MERGED BOOK:", "PUBDATE " + book.getPublishedDate().toString());
+            Log.v("MERGED BOOK:", "PUBLISHER " + book.getPublisher());
+            Log.v("MERGED BOOK:", "PAGE COUNT " + book.getPageCount());
+            Log.v("MERGED BOOK:", "IMG URL " + book.getImgUrl());
+        } catch (Exception e) {
+            Log.v("EXCEPTION", e.toString());
         }
 
         return book;

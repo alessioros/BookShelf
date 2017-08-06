@@ -43,24 +43,23 @@ public class HomeActivity extends AppCompatActivity
 
         Bundle extras = getIntent().getExtras();
 
-        if(extras != null){
+        if (extras != null) {
 
             String F_TO_LOAD = extras.getString("FRAGMENT_TO_LOAD");
 
             if (F_TO_LOAD != null) {
-                switch (F_TO_LOAD){
+                switch (F_TO_LOAD) {
                     case "SHELF":
                         Fragment fragment = ShelfFragment.newInstance();
                         getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                         getSupportActionBar().setTitle("Shelves");
                 }
             }
-        }else{
+        } else {
 
             Fragment fragment = HomeFragment.newInstance(false);
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
             getSupportActionBar().setTitle("");
-
         }
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -79,7 +78,7 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-    public void refreshHeader(){
+    public void refreshHeader() {
         PreferenceHandler pH = new PreferenceHandler(getApplicationContext());
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -88,8 +87,8 @@ public class HomeActivity extends AppCompatActivity
         TextView userInfo = (TextView) headerView.findViewById(R.id.textViewUserInfo);
         TextView booksCount = (TextView) headerView.findViewById(R.id.textViewBookCount);
 
-        userInfo.setText(pH.getUser_name()+" "+pH.getUser_surname());
-        booksCount.setText(pH.getUser_book_count()+" books");
+        userInfo.setText(pH.getUser_name() + " " + pH.getUser_surname());
+        booksCount.setText(pH.getUser_book_count() + " books");
     }
 
     @Override

@@ -3,14 +3,15 @@ package it.polimi.bookshelf.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class User implements Parcelable{
+public class User implements Parcelable {
 
     public String access_email;
     public String password;
     public String user_name;
     public String user_surname;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String access_email, String password, String user_name, String user_surname) {
         this.access_email = access_email;

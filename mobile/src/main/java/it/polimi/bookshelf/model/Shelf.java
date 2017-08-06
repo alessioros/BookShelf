@@ -9,7 +9,8 @@ public class Shelf {
     private List<Integer> BookIDs;
 
     // default empty constructor
-    public Shelf() {}
+    public Shelf() {
+    }
 
     // class constructor
     public Shelf(String name, Integer BookCount) {

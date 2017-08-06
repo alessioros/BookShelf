@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
-public class Book implements Parcelable{
+public class Book implements Parcelable {
 
     private String ISBN;
     private String Title;
@@ -18,7 +18,8 @@ public class Book implements Parcelable{
     private String ShelfID;
 
     // default empty constructor
-    public Book() {}
+    public Book() {
+    }
 
     // class constructor
     public Book(String ISBN, String Title, String Description, String PageCount, String Publisher, Date PublishedDate, String ImgUrl, String AuthorID, String ShelfID) {
@@ -71,6 +72,7 @@ public class Book implements Parcelable{
     public String getTitle() {
         return this.Title;
     }
+
     public void setDescription(String Description) {
         this.Description = Description;
     }
@@ -78,6 +80,7 @@ public class Book implements Parcelable{
     public String getDescription() {
         return this.Description;
     }
+
     public void setPageCount(String PageCount) {
         this.PageCount = PageCount;
     }
@@ -85,6 +88,7 @@ public class Book implements Parcelable{
     public String getPageCount() {
         return this.PageCount;
     }
+
     public void setPublisher(String Publisher) {
         this.Publisher = Publisher;
     }
@@ -92,6 +96,7 @@ public class Book implements Parcelable{
     public String getPublisher() {
         return this.Publisher;
     }
+
     public void setPublishedDate(Date PublishedDate) {
         this.PublishedDate = PublishedDate;
     }
@@ -99,6 +104,7 @@ public class Book implements Parcelable{
     public Date getPublishedDate() {
         return this.PublishedDate;
     }
+
     public void setImgUrl(String ImgUrl) {
         this.ImgUrl = ImgUrl;
     }
@@ -114,6 +120,7 @@ public class Book implements Parcelable{
     public String getAuthorID() {
         return this.AuthorID;
     }
+
     public void setShelfID(String ShelfID) {
         this.ShelfID = ShelfID;
     }

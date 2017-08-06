@@ -44,7 +44,7 @@ public class ShelfFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-         View view = inflater.inflate(R.layout.fragment_shelf_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_shelf_list, container, false);
 
         mShelves = loadShelves();
 
@@ -72,11 +72,11 @@ public class ShelfFragment extends Fragment {
 
                         String shelfName = dialogEdit.getText().toString();
 
-                        if (!shelfName.equals("")){
+                        if (!shelfName.equals("")) {
                             dbH.insertShelf(new Shelf(shelfName, 0));
                             mShelves.add(new Shelf(shelfName, 0));
 
-                        }else{
+                        } else {
                             Toast toast = Toast.makeText(getActivity(), "PLEASE INSERT A VALID NAME", Toast.LENGTH_SHORT);
                             toast.show();
                         }
@@ -122,7 +122,7 @@ public class ShelfFragment extends Fragment {
         DataHandler dh = new DataHandler(getActivity().getApplicationContext());
         ArrayList<Shelf> shelves = (ArrayList<Shelf>) dh.getDatabaseHandler().getShelfList();
 
-        for (Shelf shelf : shelves){
+        for (Shelf shelf : shelves) {
 
             int bookListSize = dh.getDatabaseHandler().getBookList(shelf.getName()).size();
             shelf.setBookCount(bookListSize);

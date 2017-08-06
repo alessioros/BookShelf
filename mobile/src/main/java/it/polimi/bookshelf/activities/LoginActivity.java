@@ -30,10 +30,14 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
     private User user;
 
-    @BindView(R.id.input_email) EditText _emailText;
-    @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.btn_login) Button _loginButton;
-    @BindView(R.id.link_signup) TextView _signupLink;
+    @BindView(R.id.input_email)
+    EditText _emailText;
+    @BindView(R.id.input_password)
+    EditText _passwordText;
+    @BindView(R.id.btn_login)
+    Button _loginButton;
+    @BindView(R.id.link_signup)
+    TextView _signupLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         PreferenceHandler pH = new DataHandler(LoginActivity.this).getPreferencesHandler();
 
         User user = pH.getUser();
-        if(!user.getAccess_email().isEmpty() && !user.getPassword().isEmpty()){
+        if (!user.getAccess_email().isEmpty() && !user.getPassword().isEmpty()) {
 
             login(user.getAccess_email(), user.getPassword());
         }
@@ -101,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     new DataHandler(getBaseContext()).getPreferencesHandler().setUser(user);
                                     onLoginSuccess();
-                                }else{
+                                } else {
                                     onLoginFailed();
                                 }
                                 progressDialog.dismiss();
@@ -143,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     new DataHandler(getBaseContext()).getPreferencesHandler().setUser(user);
                                     onLoginSuccess();
-                                }else{
+                                } else {
                                     onLoginFailed();
                                 }
                                 progressDialog.dismiss();
@@ -164,11 +168,11 @@ public class LoginActivity extends AppCompatActivity {
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
 
-                try{
+                try {
                     User user = data.getExtras().getParcelable("user");
                     this._emailText.setText(user.getAccess_email());
                     this._passwordText.setText(user.getPassword());
-                }catch(RuntimeException e){
+                } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
             }

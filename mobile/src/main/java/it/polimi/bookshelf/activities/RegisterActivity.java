@@ -29,12 +29,18 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     private User user;
 
-    @BindView(R.id.input_name) EditText _nameText;
-    @BindView(R.id.input_surname) EditText _surnameText;
-    @BindView(R.id.input_email) EditText _emailText;
-    @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.btn_signup) Button _signupButton;
-    @BindView(R.id.link_login) TextView _loginLink;
+    @BindView(R.id.input_name)
+    EditText _nameText;
+    @BindView(R.id.input_surname)
+    EditText _surnameText;
+    @BindView(R.id.input_email)
+    EditText _emailText;
+    @BindView(R.id.input_password)
+    EditText _passwordText;
+    @BindView(R.id.btn_signup)
+    Button _signupButton;
+    @BindView(R.id.link_login)
+    TextView _loginLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,12 +97,11 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onDataChange(DataSnapshot snapshot) {
                                 if (snapshot.exists()) {
                                     onSignupFailed("user already registered");
-                                }
-                                else {
-                                    if(cdH.addUser(email,password,name,surname)){
-                                        user = new User(email,password,name,surname);
+                                } else {
+                                    if (cdH.addUser(email, password, name, surname)) {
+                                        user = new User(email, password, name, surname);
                                         onSignupSuccess();
-                                    }else{
+                                    } else {
                                         onSignupFailed("error in adding user");
                                     }
                                 }
@@ -122,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void onSignupFailed(String error) {
-        Toast.makeText(getBaseContext(), "Register failed, "+error, Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Register failed, " + error, Toast.LENGTH_LONG).show();
 
         _signupButton.setEnabled(true);
     }
