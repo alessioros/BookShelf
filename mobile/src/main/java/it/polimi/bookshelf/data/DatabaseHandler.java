@@ -7,15 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.text.ParseException;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-import it.polimi.bookshelf.model.Book;
 import it.polimi.bookshelf.model.Author;
+import it.polimi.bookshelf.model.Book;
 import it.polimi.bookshelf.model.Shelf;
 
 public class DatabaseHandler {

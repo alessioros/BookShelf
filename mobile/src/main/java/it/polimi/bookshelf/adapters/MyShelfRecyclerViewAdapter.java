@@ -2,26 +2,22 @@ package it.polimi.bookshelf.adapters;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.activities.ShelfActivity;
 import it.polimi.bookshelf.data.DataHandler;
-import it.polimi.bookshelf.fragments.BookListFragment;
 import it.polimi.bookshelf.model.Book;
 import it.polimi.bookshelf.model.Shelf;
-
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class MyShelfRecyclerViewAdapter extends RecyclerView.Adapter<MyShelfRecyclerViewAdapter.ViewHolder> {
 

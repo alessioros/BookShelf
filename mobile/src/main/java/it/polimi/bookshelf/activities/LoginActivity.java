@@ -1,11 +1,10 @@
 package it.polimi.bookshelf.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,12 +16,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import butterknife.ButterKnife;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.data.CloudHandler;
 import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.data.PreferenceHandler;
+import it.polimi.bookshelf.data.StorageHandler;
 import it.polimi.bookshelf.objects.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         User user = pH.getUser();
         if (!user.getAccess_email().isEmpty() && !user.getPassword().isEmpty()) {
 
+            testAbout();
             login(user.getAccess_email(), user.getPassword());
         }
 
@@ -97,6 +98,8 @@ public class LoginActivity extends AppCompatActivity {
                         CloudHandler cdH = new DataHandler(LoginActivity.this).getCloudHandler();
                         DatabaseReference ref = cdH.getUser(email);
 
+                        testAbout();
+                        
                         ref.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -218,5 +221,22 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    private void testAbout(){
+
+        String aboutContent = "BookShelf is an application that lets you storing and organizing your books in an immediate way, " +
+                "thanks to his ISBN scanner.\n" +
+                "\n" +
+                "Developed by Alessio Rossotti\n" +
+                "\n" +
+                "Copyright © 2017. All rights reserved.";
+
+        StorageHandler sH = new DataHandler(LoginActivity.this).getStorageHandler();
+        if (sH.readfile("about.txt", false).equals("")) {
+
+            sH.writeFile("about.txt", aboutContent, false);
+        }
+
     }
 }

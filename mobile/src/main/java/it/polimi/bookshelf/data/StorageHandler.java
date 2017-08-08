@@ -4,10 +4,8 @@ import android.content.Context;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 
 public class StorageHandler {
 
@@ -53,7 +51,7 @@ public class StorageHandler {
     /**
      * Method that reads the content of a file
      *
-     * @param fileName the name of the file
+     * @param fileName the name of the file or its path
      * @param isTemp   if the file is temporary or not
      * @return content
      */
@@ -61,7 +59,8 @@ public class StorageHandler {
 
         StringBuilder fileContent;
         try {
-            File file = null;
+            File file;
+
             if (isTemp) {
                 file = new File(this.context.getCacheDir(), fileName);
             } else {

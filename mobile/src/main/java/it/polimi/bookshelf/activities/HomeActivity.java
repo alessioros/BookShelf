@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.data.PreferenceHandler;
+import it.polimi.bookshelf.fragments.AboutFragment;
 import it.polimi.bookshelf.fragments.HomeFragment;
 import it.polimi.bookshelf.fragments.SettingsFragment;
 import it.polimi.bookshelf.fragments.ShelfFragment;
@@ -144,6 +145,12 @@ public class HomeActivity extends AppCompatActivity
             Fragment fragment = SettingsFragment.newInstance();
             getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
             getSupportActionBar().setTitle("Settings");
+
+        } else if (id == R.id.nav_about) {
+
+            Fragment fragment = AboutFragment.newInstance();
+            getFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+            getSupportActionBar().setTitle("About");
 
         } else if (id == R.id.nav_logout) {
 

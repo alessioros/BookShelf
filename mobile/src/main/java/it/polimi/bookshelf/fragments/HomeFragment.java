@@ -27,7 +27,6 @@ import org.json.JSONObject;
 import it.polimi.bookshelf.R;
 import it.polimi.bookshelf.activities.BookDetailActivity;
 import it.polimi.bookshelf.activities.VerticalOrientationCA;
-import it.polimi.bookshelf.data.DataHandler;
 import it.polimi.bookshelf.model.Book;
 import it.polimi.bookshelf.utilities.AmazonFinder;
 import it.polimi.bookshelf.utilities.GoogleBooksFinder;
@@ -71,11 +70,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                DataHandler dH = new DataHandler(getActivity());
-                dH.getStorageHandler().writeFile("testfile", "prova prova prova", false);
-                dH.getStorageHandler().writeFile("testfiletemp", "ciao ciao ciao", true);
-                Log.v("FILE CONTENT", dH.getStorageHandler().readfile("testfile", false));
-                Log.v("FILE CONTENT", dH.getStorageHandler().readfile("testfiletmp", true));
                 scanBook();
             }
         });
@@ -131,19 +125,6 @@ public class HomeFragment extends Fragment {
 
                     progressDialog.dismiss();
                     if (book.getISBN() != null) {
-
-                        try {
-                            Log.v("FINAL BOOK: AUTHOR ID ", "" + book.getAuthorID());
-                            Log.v("FINAL BOOK: TITLE ", "" + book.getTitle());
-                            Log.v("FINAL BOOK: DESC ", "" + book.getDescription());
-                            Log.v("FINAL BOOK: ISBN ", "" + book.getISBN());
-                            Log.v("FINAL BOOK: PUBDATE ", "" + book.getPublishedDate().toString());
-                            Log.v("FINAL BOOK: PUBLISHER ", "" + book.getPublisher());
-                            Log.v("FINAL BOOK: PAGE COUNT ", "" + book.getPageCount());
-                            Log.v("FINAL BOOK: IMG URL ", "" + book.getImgUrl());
-                        } catch (Exception e) {
-                            Log.v("EXCEPTION ", e.toString());
-                        }
 
                         Intent bookIntent = new Intent(getActivity(), BookDetailActivity.class);
                         bookIntent.putExtra("book", book);

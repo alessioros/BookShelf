@@ -22,5 +22,9 @@
     {
         "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/drawable-xhdpi/ic_add_white_48dp.png",
         "source": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/src/main/res/drawable-xhdpi/ic_add_white_48dp.png"
+    },
+    {
+        "merged": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/res/merged/debug/drawable-xhdpi/ic_info_outline_black_48dp.png",
+        "source": "/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/src/main/res/drawable-xhdpi/ic_info_outline_black_48dp.png"
     }
 ]

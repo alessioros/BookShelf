@@ -2,7 +2,6 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_size">50dp</dimen>
     <dimen name="nav_header_vertical_spacing">14dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
@@ -17,24 +16,14 @@
 
     <!-- LOGIN -->
     <dimen name="login_input">200dp</dimen>
-    <dimen name="input_width">300dp</dimen>
-    <dimen name="input_padding">15dp</dimen>
     <dimen name="input_height">40dp</dimen>
-    <dimen name="main_button_width">200dp</dimen>
-    <dimen name="main_button_height">50dp</dimen>
-    <dimen name="main_button_text">20sp</dimen>
 
     <!-- BOOK DETAIL -->
     <dimen name="nobook_txtsize">25sp</dimen>
     <dimen name="nobook_margintop">35dp</dimen>
 
-    <dimen name="author_image">80dp</dimen>
-    <dimen name="author_margin">5dp</dimen>
     <dimen name="card_margin">0dp</dimen>
     <dimen name="card_elevation">5dp</dimen>
-    <dimen name="card_paddingbottom">30dp</dimen>
-    <dimen name="card_paddinglr">5dp</dimen>
-    <dimen name="card_paddingtop">5dp</dimen>
 
     <dimen name="title_margintop">20dp</dimen>
     <dimen name="title_maxwidth">300dp</dimen>
@@ -60,38 +49,13 @@
     <dimen name="button_marginbottom">30dp</dimen>
 
     <dimen name="fab_marginright">20dp</dimen>
-    <dimen name="appbar_padding_top">8dp</dimen>
-
-    <dimen name="author_name_txtsize">17sp</dimen>
-    <dimen name="author_name_margintop">16dp</dimen>
-
-    <dimen name="author_image_marginleft">30dp</dimen>
-    <dimen name="author_ratingb_marginleft">-45dp</dimen>
-    <dimen name="author_ratingb_margintop">-5dp</dimen>
-
-    <dimen name="author_loc_margintop">3dp</dimen>
-    <dimen name="author_loc_txtsize">15sp</dimen>
-    <dimen name="author_textinfo_marginleft">25dp</dimen>
-
-    <dimen name="second_ruler_margintop">20dp</dimen>
 
     <!-- SETTINGS FRAGMENT -->
 
-    <dimen name="settings_headers_padding">15dp</dimen>
     <dimen name="settings_padding">10dp</dimen>
     <dimen name="settings_paddingleft">25dp</dimen>
     <dimen name="settings_title_minwidth">90dp</dimen>
     <dimen name="settings_value_maxwidth">230dp</dimen>
-
-    <dimen name="settings_txtsize">18sp</dimen>
-    <dimen name="settings_iconsize">30dp</dimen>
-
-    <dimen name="settings_general_iconsize">30dp</dimen>
-
-    <dimen name="settings_icon_marginleft">30dp</dimen>
-    <dimen name="settings_txt_marginleft">80dp</dimen>
-
-    <dimen name="settings_locicon_width">22dp</dimen>
 
     <dimen name="dispinfo_margintop">25dp</dimen>
     <dimen name="dispinfo_marginleft">25dp</dimen>
@@ -102,11 +66,13 @@
     <dimen name="gen_title_txtsize">18sp</dimen>
     <dimen name="gen_text_txtsize">20sp</dimen>
 
-    <dimen name="contactinfo_txtsize">18sp</dimen>
-    <dimen name="contact_info_margintop">0dp</dimen>
-
     <dimen name="subtitle_marginleft">15dp</dimen>
 
     <dimen name="alert_margin">15dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+
+    <!-- ABOUT FRAGMENT -->
+    <dimen name="about_title_txtsize">22sp</dimen>
+    <dimen name="about_desc_txtsize">16sp</dimen>
+
+
 </resources>
