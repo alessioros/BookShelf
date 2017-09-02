@@ -123,7 +123,13 @@ public class ShelfFragment extends Fragment {
 
         for (Shelf shelf : shelves) {
 
-            int bookListSize = dh.getDatabaseHandler().getBookList(shelf.getName()).size();
+            int bookListSize;
+            try{
+                bookListSize = dh.getDatabaseHandler().getBookList(shelf.getName()).size();
+            }catch (NullPointerException e){
+                bookListSize = 0;
+            }
+
             shelf.setBookCount(bookListSize);
         }
 

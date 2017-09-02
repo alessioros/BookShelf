@@ -1,7 +1,5 @@
 package it.polimi.bookshelf.utilities;
 
-import android.util.Log;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -12,7 +10,6 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.util.Date;
 
-import it.polimi.bookshelf.model.Author;
 import it.polimi.bookshelf.model.Book;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -49,7 +46,6 @@ public class AmazonFinder {
 
                 switch (event) {
                     case XmlPullParser.START_TAG:
-                        //System.out.print("\n<"+name+">");
                         if (name.equals(KEY_LARGE_IMAGE) && !alreadySetted) {
 
                             firstImage = true;
@@ -71,14 +67,11 @@ public class AmazonFinder {
 
                         } else if (name.equals(KEY_AUTHOR)) {
 
-                            Author bookAuthor = new Author();
-
                             try {
-                                bookAuthor.setName(text.split(" ")[0]);
-                                bookAuthor.setSurname(text.split(" ")[1]);
-                                amazonBook.setAuthorID(text);
+                                amazonBook.setAuthor(text);
+
                             } catch (NumberFormatException e) {
-                                Log.v("AMAZON EXCEPTION: ", "AUTHOR - " + e.toString());
+                               e.printStackTrace();
                             }
 
                         } else if (name.equals(KEY_PUBLISHER)) {
@@ -93,7 +86,7 @@ public class AmazonFinder {
                             } catch (Exception e) {
                                 date = new Date();
                             }
-                            amazonBook.setPublishedDate(date);
+                            amazonBook.setPublishedDate(date.toString());
 
                         } else if (name.equals(KEY_FEATURE)) {
 
@@ -103,10 +96,11 @@ public class AmazonFinder {
 
                                     String pages = text.replace("Pagine:", "");
                                     pages = pages.replace(" ", "");
-                                    amazonBook.setPageCount(pages);
+                                    amazonBook.setPageCount(Integer.parseInt(pages));
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
+                                    amazonBook.setPageCount(0);
                                 }
                             } else if (text.contains("Pages:")) {
 
@@ -114,11 +108,14 @@ public class AmazonFinder {
 
                                     String pages = text.replace("Pages:", "");
                                     pages = pages.replace(" ", "");
-                                    amazonBook.setPageCount(pages);
+                                    amazonBook.setPageCount(Integer.parseInt(pages));
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
+                                    amazonBook.setPageCount(0);
                                 }
+                            }else{
+                                amazonBook.setPageCount(0);
                             }
 
                         } else if (name.equals(KEY_TITLE)) {
@@ -144,22 +141,9 @@ public class AmazonFinder {
         } catch (IOException e) {
             return null;
         } catch (Exception e) {
-            Log.v("AMAZON EXCEPTION ", "" + e.toString());
             return null;
         }
 
-        try {
-            Log.v("AMAZON BOOK: ", "ISBN " + amazonBook.getISBN());
-            Log.v("AMAZON BOOK: ", "AUTHOR ID " + amazonBook.getAuthorID());
-            Log.v("AMAZON BOOK: ", "TITLE " + amazonBook.getTitle());
-            Log.v("AMAZON BOOK: ", "DESCRIPTION " + amazonBook.getDescription());
-            Log.v("AMAZON BOOK: ", "PUBDATE " + amazonBook.getPublishedDate().toString());
-            Log.v("AMAZON BOOK: ", "PUBLISHER " + amazonBook.getPublisher());
-            Log.v("AMAZON BOOK: ", "PAGE COUNT " + amazonBook.getPageCount());
-            Log.v("AMAZON BOOK: ", "IMG URL " + amazonBook.getImgUrl());
-        } catch (Exception e) {
-            Log.v("EXCEPTION", e.toString());
-        }
         return amazonBook;
 
     }

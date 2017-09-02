@@ -24,20 +24,11 @@ public class DBHelper extends SQLiteOpenHelper {
                 DatabaseStrings.BOOK_TITLE + " TEXT," + DatabaseStrings.BOOK_DESCRIPTION + " TEXT,"
                 + DatabaseStrings.BOOK_PAGECOUNT + " TEXT," + DatabaseStrings.BOOK_PUBLISHER + " TEXT,"
                 + DatabaseStrings.BOOK_PUBLISHEDDATE + " TEXT," + DatabaseStrings.BOOK_IMGURL + " TEXT,"
-                + DatabaseStrings.AUTHOR_ID + " TEXT," + DatabaseStrings.SHELF_ID + " TEXT," + " FOREIGN KEY ("
-                + DatabaseStrings.AUTHOR_ID + ") REFERENCES " + DatabaseStrings.TBL_AUTHOR + "("
-                + DatabaseStrings.AUTHOR_ID + ")," + " FOREIGN KEY (" + DatabaseStrings.SHELF_ID + ") REFERENCES "
+                + DatabaseStrings.BOOK_AUTHOR + " TEXT," + DatabaseStrings.SHELF_ID + " TEXT,"
+                + " FOREIGN KEY (" + DatabaseStrings.SHELF_ID + ") REFERENCES "
                 + DatabaseStrings.TBL_SHELF + "(" + DatabaseStrings.SHELF_ID + "));";
 
         db.execSQL(CREATE_BOOK);
-
-        String CREATE_AUTHOR = "CREATE TABLE " + DatabaseStrings.TBL_AUTHOR + " (" + DatabaseStrings.AUTHOR_ID
-                + " TEXT PRIMARY KEY," +
-
-                DatabaseStrings.AUTHOR_NAME + " TEXT," + DatabaseStrings.AUTHOR_SURNAME + " TEXT,"
-                + DatabaseStrings.AUTHOR_BIOGRAPHY + " TEXT)";
-
-        db.execSQL(CREATE_AUTHOR);
 
         String CREATE_SHELF = "CREATE TABLE " + DatabaseStrings.TBL_SHELF + " (" + DatabaseStrings.SHELF_ID
                 + " TEXT PRIMARY KEY," +
@@ -53,7 +44,6 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.w(DBHelper.class.getName(), "Upgrading database from version " + oldVersion + " to " + newVersion
                 + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_BOOK);
-        db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_AUTHOR);
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseStrings.TBL_SHELF);
         onCreate(db);
     }

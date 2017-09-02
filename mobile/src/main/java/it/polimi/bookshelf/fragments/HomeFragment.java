@@ -183,7 +183,7 @@ public class HomeFragment extends Fragment {
                         public void onResponse(JSONObject response) {
 
                             Log.v("ISBNDB RESPONSE", response.toString());
-                            isbndbBook = new ISBNDbFinder(getActivity()).getBook(response);
+                            isbndbBook = new ISBNDbFinder().getBook(response);
                             book = new MergeBookSources().mergeBooks(amazonBook, googleBook, isbndbBook);
                             SearchForBooks.this.onPostExecute();
 
@@ -216,7 +216,7 @@ public class HomeFragment extends Fragment {
                         public void onResponse(JSONObject response) {
 
                             Log.v("NO GOOGLE BOOK", "");
-                            isbndbBook = new ISBNDbFinder(getActivity()).getBook(response);
+                            isbndbBook = new ISBNDbFinder().getBook(response);
                             book = new MergeBookSources().mergeBooks(amazonBook, null, isbndbBook);
                             SearchForBooks.this.onPostExecute();
                         }

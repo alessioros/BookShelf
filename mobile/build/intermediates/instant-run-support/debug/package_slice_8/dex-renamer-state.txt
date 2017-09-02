@@ -1,4 +1,4 @@
-#Tue Aug 08 11:57:52 CEST 2017
+#Tue Aug 29 11:48:29 CEST 2017
 base.0=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8
 renamed.0=classes.dex
 file.0=/Users/alessiorossotti/Documents/Dropbox/Universita/Magistrale/tesi_baresi/BookShelf/mobile/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex

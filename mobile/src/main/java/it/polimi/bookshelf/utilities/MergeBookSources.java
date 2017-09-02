@@ -1,9 +1,5 @@
 package it.polimi.bookshelf.utilities;
 
-import android.util.Log;
-
-import java.util.Date;
-
 import it.polimi.bookshelf.model.Book;
 
 public class MergeBookSources {
@@ -21,7 +17,7 @@ public class MergeBookSources {
 
             book.setISBN(mergeThree(amazonBook.getISBN(), googleBook.getISBN(), LTBook.getISBN()));
             book.setTitle(mergeThree(googleBook.getTitle(), amazonBook.getTitle(), LTBook.getTitle()));
-            book.setAuthorID(mergeThree(googleBook.getAuthorID(), amazonBook.getAuthorID(), LTBook.getAuthorID()));
+            book.setAuthor(mergeThree(googleBook.getAuthor(), amazonBook.getAuthor(), LTBook.getAuthor()));
 
             try {
                 // mandatory info
@@ -33,7 +29,12 @@ public class MergeBookSources {
             }
 
             book.setDescription(mergeThree(googleBook.getDescription(), LTBook.getDescription(), amazonBook.getDescription()));
-            book.setPageCount(mergeThree(googleBook.getPageCount(), amazonBook.getPageCount(), LTBook.getPageCount()));
+
+            try{
+                book.setPageCount(mergeThree(googleBook.getPageCount(), amazonBook.getPageCount(), LTBook.getPageCount()));
+            }catch (NullPointerException e){
+                book.setPageCount(0);
+            }
             book.setPublishedDate(mergeThree(amazonBook.getPublishedDate(), googleBook.getPublishedDate(), LTBook.getPublishedDate()));
             book.setPublisher(mergeThree(amazonBook.getPublisher(), googleBook.getPublisher(), LTBook.getPublisher()));
 
@@ -48,7 +49,7 @@ public class MergeBookSources {
 
             book.setISBN(mergeTwo(amazonBook.getISBN(), googleBook.getISBN()));
             book.setTitle(mergeTwo(googleBook.getTitle(), amazonBook.getTitle()));
-            book.setAuthorID(mergeTwo(googleBook.getAuthorID(), amazonBook.getAuthorID()));
+            book.setAuthor(mergeTwo(googleBook.getAuthor(), amazonBook.getAuthor()));
 
             try {
                 // mandatory info
@@ -76,7 +77,7 @@ public class MergeBookSources {
 
             book.setISBN(mergeTwo(amazonBook.getISBN(), LTBook.getISBN()));
             book.setTitle(mergeTwo(amazonBook.getTitle(), LTBook.getTitle()));
-            book.setAuthorID(mergeTwo(LTBook.getAuthorID(), amazonBook.getAuthorID()));
+            book.setAuthor(mergeTwo(LTBook.getAuthor(), amazonBook.getAuthor()));
 
             try {
                 // mandatory info
@@ -88,7 +89,13 @@ public class MergeBookSources {
             }
 
             book.setDescription(LTBook.getDescription());
-            book.setPageCount(mergeTwo(LTBook.getPageCount(), amazonBook.getPageCount()));
+
+            try {
+                book.setPageCount(mergeTwo(LTBook.getPageCount(), amazonBook.getPageCount()));
+            }catch(Exception e){
+                book.setPageCount(0);
+            }
+
             book.setPublishedDate(mergeTwo(amazonBook.getPublishedDate(), LTBook.getPublishedDate()));
             book.setPublisher(mergeTwo(amazonBook.getPublisher(), LTBook.getPublisher()));
 
@@ -103,7 +110,7 @@ public class MergeBookSources {
 
             book.setISBN(amazonBook.getISBN());
             book.setTitle(amazonBook.getTitle());
-            book.setAuthorID(amazonBook.getAuthorID());
+            book.setAuthor(amazonBook.getAuthor());
 
             try {
                 // mandatory info
@@ -130,7 +137,7 @@ public class MergeBookSources {
 
             book.setISBN(mergeTwo(googleBook.getISBN(), LTBook.getISBN()));
             book.setTitle(mergeTwo(googleBook.getTitle(), LTBook.getTitle()));
-            book.setAuthorID(mergeTwo(googleBook.getAuthorID(), LTBook.getAuthorID()));
+            book.setAuthor(mergeTwo(googleBook.getAuthor(), LTBook.getAuthor()));
 
             try {
                 // mandatory info
@@ -157,7 +164,7 @@ public class MergeBookSources {
 
             book.setISBN(googleBook.getISBN());
             book.setTitle(googleBook.getTitle());
-            book.setAuthorID(googleBook.getAuthorID());
+            book.setAuthor(googleBook.getAuthor());
 
             try {
                 // mandatory info
@@ -185,7 +192,7 @@ public class MergeBookSources {
 
             book.setISBN(LTBook.getISBN());
             book.setTitle(LTBook.getTitle());
-            book.setAuthorID(LTBook.getAuthorID());
+            book.setAuthor(LTBook.getAuthor());
 
             try {
                 // mandatory info
@@ -211,19 +218,6 @@ public class MergeBookSources {
         } else {
 
             return null;
-        }
-
-        try {
-            Log.v("MERGED BOOK: ", "ISBN " + book.getISBN());
-            Log.v("MERGED BOOK: ", "AUTHOR ID " + book.getAuthorID());
-            Log.v("MERGED BOOK:", "TITLE " + book.getTitle());
-            Log.v("MERGED BOOK:", "DESCRIPTION " + book.getDescription());
-            Log.v("MERGED BOOK:", "PUBDATE " + book.getPublishedDate().toString());
-            Log.v("MERGED BOOK:", "PUBLISHER " + book.getPublisher());
-            Log.v("MERGED BOOK:", "PAGE COUNT " + book.getPageCount());
-            Log.v("MERGED BOOK:", "IMG URL " + book.getImgUrl());
-        } catch (Exception e) {
-            Log.v("EXCEPTION", e.toString());
         }
 
         return book;
@@ -275,20 +269,6 @@ public class MergeBookSources {
         return 0;
     }
 
-    public Date mergeTwo(Date one, Date two) {
-
-        if (one != null) {
-
-            return one;
-
-        } else if (two != null) {
-
-            return two;
-        }
-
-        return new Date();
-    }
-
     public int mergeThree(int one, int two, int three) {
 
         if (one != 0) {
@@ -306,23 +286,4 @@ public class MergeBookSources {
 
         return 0;
     }
-
-    public Date mergeThree(Date one, Date two, Date three) {
-
-        if (one != null) {
-
-            return one;
-
-        } else if (two != null) {
-
-            return two;
-
-        } else if (three != null) {
-
-            return three;
-        }
-
-        return new Date();
-    }
-
 }

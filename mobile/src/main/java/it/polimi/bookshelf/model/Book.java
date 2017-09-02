@@ -3,18 +3,16 @@ package it.polimi.bookshelf.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
-
 public class Book implements Parcelable {
 
     private String ISBN;
     private String Title;
     private String Description;
-    private String PageCount;
+    private Integer PageCount;
     private String Publisher;
-    private Date PublishedDate;
-    private String ImgUrl;
-    private String AuthorID;
+    private String PublishedDate;
+    private String imgUrl;
+    private String Author;
     private String ShelfID;
 
     // default empty constructor
@@ -22,15 +20,14 @@ public class Book implements Parcelable {
     }
 
     // class constructor
-    public Book(String ISBN, String Title, String Description, String PageCount, String Publisher, Date PublishedDate, String ImgUrl, String AuthorID, String ShelfID) {
+    public Book(String ISBN, String Title, String Description, Integer PageCount, String Publisher, String PublishedDate, String Author, String ShelfID) {
         this.ISBN = ISBN;
         this.Title = Title;
         this.Description = Description;
         this.PageCount = PageCount;
         this.Publisher = Publisher;
         this.PublishedDate = PublishedDate;
-        this.ImgUrl = ImgUrl;
-        this.AuthorID = AuthorID;
+        this.Author = Author;
         this.ShelfID = ShelfID;
     }
 
@@ -38,10 +35,11 @@ public class Book implements Parcelable {
         ISBN = in.readString();
         Title = in.readString();
         Description = in.readString();
-        PageCount = in.readString();
+        PageCount = in.readInt();
         Publisher = in.readString();
-        ImgUrl = in.readString();
-        AuthorID = in.readString();
+        PublishedDate = in.readString();
+        imgUrl = in.readString();
+        Author = in.readString();
         ShelfID = in.readString();
     }
 
@@ -72,7 +70,6 @@ public class Book implements Parcelable {
     public String getTitle() {
         return this.Title;
     }
-
     public void setDescription(String Description) {
         this.Description = Description;
     }
@@ -80,15 +77,13 @@ public class Book implements Parcelable {
     public String getDescription() {
         return this.Description;
     }
-
-    public void setPageCount(String PageCount) {
+    public void setPageCount(Integer PageCount) {
         this.PageCount = PageCount;
     }
 
-    public String getPageCount() {
+    public Integer getPageCount() {
         return this.PageCount;
     }
-
     public void setPublisher(String Publisher) {
         this.Publisher = Publisher;
     }
@@ -96,29 +91,27 @@ public class Book implements Parcelable {
     public String getPublisher() {
         return this.Publisher;
     }
-
-    public void setPublishedDate(Date PublishedDate) {
+    public void setPublishedDate(String PublishedDate) {
         this.PublishedDate = PublishedDate;
     }
 
-    public Date getPublishedDate() {
+    public String getPublishedDate() {
         return this.PublishedDate;
     }
-
-    public void setImgUrl(String ImgUrl) {
-        this.ImgUrl = ImgUrl;
+    public void setAuthor(String Author) {
+        this.Author = Author;
     }
+
+    public void setImgUrl(String imgUrl) {
+    this.imgUrl = imgUrl;
+}
 
     public String getImgUrl() {
-        return this.ImgUrl;
-    }
+    return this.imgUrl;
+}
 
-    public void setAuthorID(String AuthorID) {
-        this.AuthorID = AuthorID;
-    }
-
-    public String getAuthorID() {
-        return this.AuthorID;
+    public String getAuthor() {
+        return this.Author;
     }
 
     public void setShelfID(String ShelfID) {
@@ -139,10 +132,11 @@ public class Book implements Parcelable {
         dest.writeString(ISBN);
         dest.writeString(Title);
         dest.writeString(Description);
-        dest.writeString(PageCount);
+        dest.writeInt(PageCount);
         dest.writeString(Publisher);
-        dest.writeString(ImgUrl);
-        dest.writeString(AuthorID);
+        dest.writeString(PublishedDate);
+        dest.writeString(imgUrl);
+        dest.writeString(Author);
         dest.writeString(ShelfID);
     }
 }

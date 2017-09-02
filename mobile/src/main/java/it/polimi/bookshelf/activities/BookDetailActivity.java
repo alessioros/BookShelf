@@ -40,7 +40,6 @@ public class BookDetailActivity extends AppCompatActivity {
     private Book book;
     private static int REDIRECT_TIME_OUT = 500;
     private CollapsingToolbarLayout collapsingToolbarLayout;
-    private static final String TAG = "BookDetail";
     private DatabaseHandler dbH;
 
     @Override
@@ -90,13 +89,16 @@ public class BookDetailActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            bookAuthor.setText(book.getAuthorID());
+            bookAuthor.setText(book.getAuthor());
 
-            if (Integer.parseInt(book.getPageCount()) != 0) {
-
-                bookPageCount.setText(book.getPageCount() + " " + getResources().getString(R.string.book_pages));
+            try{
+                if (book.getPageCount() != 0) {
+                     bookPageCount.setText(book.getPageCount() + " " + getResources().getString(R.string.book_pages));
+                }
+            }catch (Exception e ) {
+                e.printStackTrace();
             }
-
+            
             bookTitle.setText(book.getTitle());
 
             if (book.getTitle().length() > 30) {

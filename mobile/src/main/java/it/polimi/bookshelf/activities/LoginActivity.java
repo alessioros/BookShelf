@@ -97,8 +97,6 @@ public class LoginActivity extends AppCompatActivity {
 
                         CloudHandler cdH = new DataHandler(LoginActivity.this).getCloudHandler();
                         DatabaseReference ref = cdH.getUser(email);
-
-                        testAbout();
                         
                         ref.addValueEventListener(new ValueEventListener() {
                             @Override
@@ -226,7 +224,7 @@ public class LoginActivity extends AppCompatActivity {
     private void testAbout(){
 
         String aboutContent = "BookShelf is an application that lets you storing and organizing your books in an immediate way, " +
-                "thanks to his ISBN scanner.\n" +
+                "thanks to its ISBN scanner.\n" +
                 "\n" +
                 "Developed by Alessio Rossotti\n" +
                 "\n" +

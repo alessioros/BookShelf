@@ -5,16 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
-import android.util.Log;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import it.polimi.bookshelf.model.Author;
 import it.polimi.bookshelf.model.Book;
 import it.polimi.bookshelf.model.Shelf;
 
@@ -29,24 +26,24 @@ public class DatabaseHandler {
     public void insertBook(Book book) {
         SQLiteDatabase db = dbhelper.getWritableDatabase();
 
-        // choose your date format
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ITALY);
-
         ContentValues cv = new ContentValues();
 
         cv.put(DatabaseStrings.BOOK_ID, book.getISBN());
+
         cv.put(DatabaseStrings.BOOK_TITLE, book.getTitle());
+
         cv.put(DatabaseStrings.BOOK_DESCRIPTION, book.getDescription());
+
         cv.put(DatabaseStrings.BOOK_PAGECOUNT, book.getPageCount());
+
         cv.put(DatabaseStrings.BOOK_PUBLISHER, book.getPublisher());
-        try {
-            cv.put(DatabaseStrings.BOOK_PUBLISHEDDATE, dateFormat.format(book.getPublishedDate()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        cv.put(DatabaseStrings.BOOK_PUBLISHEDDATE, book.getPublishedDate());
 
         cv.put(DatabaseStrings.BOOK_IMGURL, book.getImgUrl());
-        cv.put(DatabaseStrings.AUTHOR_ID, book.getAuthorID());
+
+        cv.put(DatabaseStrings.BOOK_AUTHOR, book.getAuthor());
+
         cv.put(DatabaseStrings.SHELF_ID, book.getShelfID());
         try {
             db.insert(DatabaseStrings.TBL_BOOK, null, cv);
@@ -54,30 +51,13 @@ public class DatabaseHandler {
             sqle.printStackTrace();
         }
     }
-
-    public void insertAuthor(Author author) {
-        SQLiteDatabase db = dbhelper.getWritableDatabase();
-
-        ContentValues cv = new ContentValues();
-
-        cv.put(DatabaseStrings.AUTHOR_ID, author.getID());
-        cv.put(DatabaseStrings.AUTHOR_NAME, author.getName());
-        cv.put(DatabaseStrings.AUTHOR_SURNAME, author.getSurname());
-        cv.put(DatabaseStrings.AUTHOR_BIOGRAPHY, author.getBiography());
-
-        try {
-            db.insert(DatabaseStrings.TBL_AUTHOR, null, cv);
-        } catch (SQLiteException sqle) {
-            sqle.printStackTrace();
-        }
-    }
-
     public void insertShelf(Shelf shelf) {
         SQLiteDatabase db = dbhelper.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
         cv.put(DatabaseStrings.SHELF_ID, shelf.getName());
+
         cv.put(DatabaseStrings.SHELF_BOOKCOUNT, shelf.getBookCount());
 
         try {
@@ -86,7 +66,6 @@ public class DatabaseHandler {
             sqle.printStackTrace();
         }
     }
-
     public boolean deleteBook(String ISBN) {
         SQLiteDatabase db = dbhelper.getWritableDatabase();
         try {
@@ -96,17 +75,6 @@ public class DatabaseHandler {
             return false;
         }
     }
-
-    public boolean deleteAuthor(String ID) {
-        SQLiteDatabase db = dbhelper.getWritableDatabase();
-        try {
-            return db.delete(DatabaseStrings.TBL_AUTHOR, DatabaseStrings.AUTHOR_ID + "=?", new String[]{ID}) > 0;
-        } catch (SQLiteException sqle) {
-            sqle.printStackTrace();
-            return false;
-        }
-    }
-
     public boolean deleteShelf(String name) {
         SQLiteDatabase db = dbhelper.getWritableDatabase();
         try {
@@ -116,7 +84,6 @@ public class DatabaseHandler {
             return false;
         }
     }
-
     public Book queryBook(String ISBN) {
         Cursor crs;
         Book book = new Book();
@@ -128,74 +95,29 @@ public class DatabaseHandler {
 
         try {
             String SQL_QUERY = "SELECT * FROM " + tableName + " WHERE " + primaryKey + " = ?";
-            System.out.print(SQL_QUERY);
             crs = db.rawQuery(SQL_QUERY, whereArgs);
         } catch (SQLiteException sqle) {
             sqle.printStackTrace();
             return null;
         }
 
-        // choose your date format
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ITALY);
-        Date date;
-
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
-
             book.setTitle(crs.getString(0));
             book.setDescription(crs.getString(1));
-            book.setPageCount(crs.getString(2));
+            book.setPageCount(crs.getInt(2));
             book.setPublisher(crs.getString(3));
-            try {
-                date = dateFormat.parse(crs.getString(4));
-                book.setPublishedDate(date);
-            } catch (ParseException e) {
-                book.setPublishedDate(null);
-                e.printStackTrace();
-            }
-            book.setImgUrl(crs.getString(5));
-            System.out.print(book.getISBN());
+            book.setPublishedDate(crs.getString(4));
+            book.setAuthor(crs.getString(5));
             crs.moveToNext();
         }
         crs.close();
 
         return book;
     }
-
-    public Author queryAuthor(String ID) {
-        Cursor crs;
-        Author Author = new Author();
-        SQLiteDatabase db = dbhelper.getWritableDatabase();
-
-        String tableName = DatabaseStrings.TBL_AUTHOR;
-        String primaryKey = DatabaseStrings.AUTHOR_ID;
-        String[] whereArgs = new String[]{ID};
-
-        try {
-            String SQL_QUERY = "SELECT * FROM " + tableName + " WHERE " + primaryKey + " = ?";
-            crs = db.rawQuery(SQL_QUERY, whereArgs);
-        } catch (SQLiteException sqle) {
-            sqle.printStackTrace();
-            return null;
-        }
-
-        crs.moveToFirst();
-        while (!crs.isAfterLast()) {
-            Author.setName(crs.getString(0));
-            Author.setSurname(crs.getString(1));
-            Author.setBiography(crs.getString(2));
-            crs.moveToNext();
-        }
-        crs.close();
-
-        return Author;
-    }
-
     public Shelf queryShelf(String name) {
         Cursor crs;
         Shelf shelf = new Shelf();
-        shelf.setName(name);
-
         SQLiteDatabase db = dbhelper.getWritableDatabase();
 
         String tableName = DatabaseStrings.TBL_SHELF;
@@ -207,25 +129,23 @@ public class DatabaseHandler {
             crs = db.rawQuery(SQL_QUERY, whereArgs);
         } catch (SQLiteException sqle) {
             sqle.printStackTrace();
-            return new Shelf();
+            return null;
         }
 
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
-            shelf.setName(crs.getString(0));
-            shelf.setBookCount(crs.getInt(1));
+            shelf.setBookCount(crs.getInt(0));
             crs.moveToNext();
         }
         crs.close();
 
         return shelf;
     }
-
     public List<Book> getBookList() {
         SQLiteDatabase db = dbhelper.getWritableDatabase();
 
         Cursor crs;
-        List<Book> BookList = new ArrayList<>();
+        List<Book> bookList = new ArrayList<>();
 
         String tableName = DatabaseStrings.TBL_BOOK;
 
@@ -237,35 +157,26 @@ public class DatabaseHandler {
             return null;
         }
 
-        // choose your date format
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ITALY);
-        Date date;
-
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
 
-            Book Book = new Book();
+            Book book = new Book();
 
-            Book.setISBN(crs.getString(0));
-            Book.setTitle(crs.getString(1));
-            Book.setDescription(crs.getString(2));
-            Book.setPageCount(crs.getString(3));
-            Book.setPublisher(crs.getString(4));
-            try {
-                date = dateFormat.parse(crs.getString(5));
-                Book.setPublishedDate(date);
-            } catch (Exception e) {
-                Book.setPublishedDate(null);
-                e.printStackTrace();
-            }
-            Book.setImgUrl(crs.getString(6));
+            book.setISBN(crs.getString(0));
 
-            BookList.add(Book);
+            book.setTitle(crs.getString(0));
+            book.setDescription(crs.getString(1));
+            book.setPageCount(crs.getInt(3));
+            book.setPublisher(crs.getString(3));
+            book.setPublishedDate(crs.getString(4));
+            book.setAuthor(crs.getString(5));
+
+            bookList.add(book);
             crs.moveToNext();
         }
         crs.close();
 
-        return BookList;
+        return bookList;
 
     }
 
@@ -285,10 +196,6 @@ public class DatabaseHandler {
             return null;
         }
 
-        // choose your date format
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ITALY);
-        Date date;
-
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
 
@@ -297,12 +204,10 @@ public class DatabaseHandler {
             Book.setISBN(crs.getString(0));
             Book.setTitle(crs.getString(1));
             Book.setDescription(crs.getString(2));
-            Book.setPageCount(crs.getString(3));
+            Book.setPageCount(Integer.parseInt(crs.getString(3)));
             Book.setPublisher(crs.getString(4));
             try {
-                Log.v("DATE", " " + crs.getString(5));
-                date = dateFormat.parse(crs.getString(5));
-                Book.setPublishedDate(date);
+                Book.setPublishedDate(crs.getString(5));
             } catch (Exception e) {
                 Book.setPublishedDate(null);
                 e.printStackTrace();
@@ -317,45 +222,11 @@ public class DatabaseHandler {
         return BookList;
     }
 
-    public List<Author> getAuthorList() {
-        SQLiteDatabase db = dbhelper.getWritableDatabase();
-
-        Cursor crs;
-        List<Author> AuthorList = new ArrayList<>();
-
-        String tableName = DatabaseStrings.TBL_AUTHOR;
-
-        try {
-            String SQL_QUERY = "SELECT * FROM " + tableName;
-            crs = db.rawQuery(SQL_QUERY, null);
-        } catch (SQLiteException sqle) {
-            sqle.printStackTrace();
-            return null;
-        }
-
-        crs.moveToFirst();
-        while (!crs.isAfterLast()) {
-
-            Author Author = new Author();
-
-            Author.setName(crs.getString(0));
-            Author.setSurname(crs.getString(1));
-            Author.setBiography(crs.getString(2));
-
-            AuthorList.add(Author);
-            crs.moveToNext();
-        }
-        crs.close();
-
-        return AuthorList;
-
-    }
-
     public List<Shelf> getShelfList() {
         SQLiteDatabase db = dbhelper.getWritableDatabase();
 
         Cursor crs;
-        List<Shelf> ShelfList = new ArrayList<>();
+        List<Shelf> shelfList = new ArrayList<>();
 
         String tableName = DatabaseStrings.TBL_SHELF;
 
@@ -370,17 +241,19 @@ public class DatabaseHandler {
         crs.moveToFirst();
         while (!crs.isAfterLast()) {
 
-            Shelf Shelf = new Shelf();
+            Shelf shelf = new Shelf();
 
-            Shelf.setName(crs.getString(0));
-            Shelf.setBookCount(crs.getInt(1));
+            shelf.setName(crs.getString(0));
 
-            ShelfList.add(Shelf);
+            shelf.setBookCount(crs.getInt(1));
+
+            shelfList.add(shelf);
             crs.moveToNext();
         }
         crs.close();
 
-        return ShelfList;
+        return shelfList;
 
     }
 }
+

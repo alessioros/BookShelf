@@ -11,13 +11,7 @@ class DatabaseStrings {
     static final String BOOK_PUBLISHER = "publisher";
     static final String BOOK_PUBLISHEDDATE = "publishedDate";
     static final String BOOK_IMGURL = "imgUrl";
-
-    /* Strings for table Author*/
-    static final String TBL_AUTHOR = "Author";
-    static final String AUTHOR_ID = "ID";
-    static final String AUTHOR_NAME = "name";
-    static final String AUTHOR_SURNAME = "surname";
-    static final String AUTHOR_BIOGRAPHY = "biography";
+    static final String BOOK_AUTHOR = "author";
 
     /* Strings for table Shelf*/
     static final String TBL_SHELF = "Shelf";

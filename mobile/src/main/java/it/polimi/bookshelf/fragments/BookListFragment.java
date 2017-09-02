@@ -34,7 +34,6 @@ import it.polimi.bookshelf.activities.BookDetailActivity;
 import it.polimi.bookshelf.activities.VerticalOrientationCA;
 import it.polimi.bookshelf.adapters.MyBookRecyclerViewAdapter;
 import it.polimi.bookshelf.data.DataHandler;
-import it.polimi.bookshelf.model.Author;
 import it.polimi.bookshelf.model.Book;
 import it.polimi.bookshelf.utilities.AmazonFinder;
 import it.polimi.bookshelf.utilities.GoogleBooksFinder;
@@ -46,7 +45,6 @@ public class BookListFragment extends Fragment {
 
     private ArrayList<Book> mBooks;
     private Book book, amazonBook, googleBook, isbndbBook;
-    private Author author;
     private String GOOGLE_API = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
     private String shelfName;
 
@@ -129,19 +127,6 @@ public class BookListFragment extends Fragment {
                     progressDialog.dismiss();
                     if (book.getISBN() != null) {
 
-                        try {
-                            Log.v("FINAL BOOK: AUTHOR ID ", "" + book.getAuthorID());
-                            Log.v("FINAL BOOK: TITLE ", "" + book.getTitle());
-                            Log.v("FINAL BOOK: DESC ", "" + book.getDescription());
-                            Log.v("FINAL BOOK: ISBN ", "" + book.getISBN());
-                            Log.v("FINAL BOOK: PUBDATE ", "" + book.getPublishedDate().toString());
-                            Log.v("FINAL BOOK: PUBLISHER ", "" + book.getPublisher());
-                            Log.v("FINAL BOOK: PAGE COUNT ", "" + book.getPageCount());
-                            Log.v("FINAL BOOK: IMG URL ", "" + book.getImgUrl());
-                        } catch (Exception e) {
-                            Log.v("EXCEPTION ", e.toString());
-                        }
-
                         Intent bookIntent = new Intent(getActivity(), BookDetailActivity.class);
                         bookIntent.putExtra("book", book);
                         bookIntent.putExtra("button", "add");
@@ -215,7 +200,7 @@ public class BookListFragment extends Fragment {
                         public void onResponse(JSONObject response) {
 
                             Log.v("ISBNDB RESPONSE", response.toString());
-                            isbndbBook = new ISBNDbFinder(getActivity()).getBook(response);
+                            isbndbBook = new ISBNDbFinder().getBook(response);
                             book = new MergeBookSources().mergeBooks(amazonBook, googleBook, isbndbBook);
                             SearchForBooks.this.onPostExecute();
 
@@ -248,7 +233,7 @@ public class BookListFragment extends Fragment {
                         public void onResponse(JSONObject response) {
 
                             Log.v("NO GOOGLE BOOK", "");
-                            isbndbBook = new ISBNDbFinder(getActivity()).getBook(response);
+                            isbndbBook = new ISBNDbFinder().getBook(response);
                             book = new MergeBookSources().mergeBooks(amazonBook, null, isbndbBook);
                             SearchForBooks.this.onPostExecute();
                         }
